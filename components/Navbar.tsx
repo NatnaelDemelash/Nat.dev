@@ -26,7 +26,7 @@ const Navbar = () => {
 
       {/* Slide-in Menu */}
       <nav
-        className={`absolute top-full md:-mt-[70px] md:mr-14 border-1 border-slate-200 transition-all duration-300 ease-in-out z-40
+        className={`absolute top-full md:-mt-[70px] md:mr-14 border-2 border-blue-100 transition-all duration-300 ease-in-out z-40
           ${
             isOpen
               ? 'opacity-100 scale-100'
