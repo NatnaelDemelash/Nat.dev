@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+import { Darker_Grotesque } from 'next/font/google';
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-darker-grotesque',
+  display: 'swap', // (better for performance)
 });
 
 export const metadata: Metadata = {
@@ -23,12 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${darkerGrotesque.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
