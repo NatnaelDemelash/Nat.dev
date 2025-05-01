@@ -11,11 +11,11 @@ const Navbar = () => {
   return (
     <header className="relative z-50 flex items-center justify-between p-4">
       {/* Logo */}
-      <Link href="/" className="flex items-center">
-        <AudioWaveform
-          size={40}
-          className="hover:text-blue-500 transition-all duration-300 hover:rotate-180"
-        />
+      <Link
+        href="/"
+        className="flex items-center p-2 transition-all duration-300 hover:rotate-180 hover:border-2 hover:border-[#333] hover:rounded-full"
+      >
+        <AudioWaveform size={24} className="" />
       </Link>
 
       {/* Menu Button */}
@@ -29,7 +29,7 @@ const Navbar = () => {
 
       {/* Slide-in Menu */}
       <nav
-        className={`absolute top-full md:-mt-[70px] md:mr-14 border-2 border-blue-100 transition-all duration-300 ease-in-out z-40
+        className={`absolute top-full md:-mt-[70px] md:mr-14 border-2 border-[#4040407c] transition-all duration-300 ease-in-out z-40
           ${
             isOpen
               ? 'opacity-100 scale-100'
@@ -49,7 +49,7 @@ const Navbar = () => {
             key={text}
             href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
             onClick={() => setIsOpen(false)}
-            className="font-semibold text-lg md:text-xl hover:text-blue-400 hover:scale-110 transition duration-200"
+            className="font-medium text-lg md:text-xl hover:scale-110 transition-all duration-200"
           >
             {text}
           </Link>
