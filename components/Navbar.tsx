@@ -1,10 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X, AudioWaveform } from 'lucide-react';
+import { Equal, X, AudioWaveform } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-import logo from '@/public/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +21,7 @@ const Navbar = () => {
         className="p-3 rounded-lg bg-black text-white z-50"
         aria-label="Toggle Menu"
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {isOpen ? <X size={24} /> : <Equal size={24} />}
       </button>
 
       {/* Slide-in Menu */}
@@ -48,7 +46,7 @@ const Navbar = () => {
             key={text}
             href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
             onClick={() => setIsOpen(false)}
-            className="font-semibold text-lg md:text-xl"
+            className="font-semibold text-lg md:text-xl hover:text-blue-400 hover:scale-110 transition duration-200"
           >
             {text}
           </Link>
