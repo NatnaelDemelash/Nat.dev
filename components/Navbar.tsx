@@ -12,7 +12,10 @@ const Navbar = () => {
     <header className="relative z-50 flex items-center justify-between p-4">
       {/* Logo */}
       <Link href="/" className="flex items-center">
-        <AudioWaveform size={40} />
+        <AudioWaveform
+          size={40}
+          className="hover:text-blue-500 transition-all duration-300 hover:rotate-180"
+        />
       </Link>
 
       {/* Menu Button */}
