@@ -1,16 +1,16 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight, Check, CheckCheck } from 'lucide-react';
 import Image from 'next/image';
 
 import profile from '@/public/profile.png';
 
 export default function Hero() {
   return (
-    <section className="h-screen mt-24 flex flex-col space-y-6">
+    <section className="h-screen mt-20 flex flex-col space-y-6">
       <div className="relative">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold max-w-2xl relative z-10">
           Coding visuals until they tell a story
         </h1>
-        {/* <div className="hidden md:block absolute -left-18 -top-18 w-[80%] h-[140%] -rotate-12 border-2 border-green-500 rounded-full opacity-70 transform  z-0" /> */}
+        <div className="hidden md:block absolute -left-4 top-2 w-[44%] h-[50%]  border-2 border-blue-700 rounded-full opacity-70 transform  z-0" />
       </div>
       {/* link */}
       <a
@@ -33,10 +33,10 @@ export default function Hero() {
           </div>
 
           <div className="flex-1 space-y-2">
-            <h1 className="text-2xl font-bold text-gray-800 border-2 bg-gray-50 border-[#4040407c] w-fit p-2 rounded-3xl rounded-bl-none">
-              Hi, Natnael here.
+            <h1 className="text-2xl font-bold text-gray-800  bg-[#FBFBFA] border-2 border-[#4040407c] w-fit p-2 rounded-3xl rounded-bl-none">
+              Hi, <span className="text-blue-400">Natnael</span> here.
             </h1>
-            <p className="text-gray-600 text-xl bg-gray-50 border-2 border-[#4040407c] w-fit p-2 rounded-full rounded-bl-none">
+            <p className="text-gray-600 text-xl bg-[#FBFBFA] border-2 border-[#4040407c] w-fit p-3 rounded-3xl rounded-bl-none">
               Frontend developer with 2 years of experience building responsive,
               high-quality interfaces using React, Next.js, and TypeScript.
             </p>
@@ -45,8 +45,7 @@ export default function Hero() {
             <div className="flex items-center text-sm text-gray-500">
               <span className="mr-1">4m ago</span>
               <div className="flex items-center">
-                <Check className="w-3 h-3 text-green-500" />
-                <Check className="w-3 h-3 text-green-500 -ml-1" />
+                <CheckCheck className="w-4 h-4 text-green-500" />
               </div>
             </div>
           </div>

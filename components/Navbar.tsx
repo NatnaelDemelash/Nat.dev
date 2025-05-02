@@ -29,13 +29,13 @@ const Navbar = () => {
 
       {/* Slide-in Menu */}
       <nav
-        className={`absolute top-full md:-mt-[70px] md:mr-14 border-2 border-[#4040407c] transition-all duration-300 ease-in-out z-40
+        className={`absolute top-full md:-mt-[70px] md:mr-14 border-2 border-[#6666664e] transition-all duration-300 ease-in-out z-40
           ${
             isOpen
               ? 'opacity-100 scale-100'
               : 'opacity-0 scale-95 pointer-events-none'
           }
-          flex bg-white rounded-lg  p-4
+          flex bg-white backdrop-blur-2xl rounded-lg  p-4
           flex-col items-start gap-4
           sm:flex-row sm:items-center sm:gap-10 md:gap-14
         `}
