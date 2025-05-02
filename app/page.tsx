@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/sections/Hero';
+import TechStack from '@/sections/TechStacks';
 import React from 'react';
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <main className="px-6">
         <Hero />
+        <TechStack />
       </main>
     </div>
   );

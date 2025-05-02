@@ -10,7 +10,7 @@ export default function Hero() {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold max-w-2xl relative z-10">
           Coding visuals until they tell a story
         </h1>
-        <div className="hidden md:block absolute -left-4 top-2 w-[44%] h-[50%]  border-2 border-blue-700 rounded-full opacity-70 transform  z-0" />
+        <div className="hidden md:block absolute -left-4 top-2 w-[44%] h-[50%]  border-2 border-blue-500 rounded-full opacity-70 transform  z-0" />
       </div>
       {/* link */}
       <a
@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-start gap-4">
           {/* Avatar Circle */}
           <div className="flex-shrink-0">
-            <div className="w-40 h-40 md:mr-10 rounded-full  bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden">
+            <div className="w-40 h-40 md:mr-10 rounded-full  bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden hover:border-2 hover:border-blue-300">
               {/* <span className="text-2xl font-bold text-blue-500">N</span> */}
               <Image alt="profile pic" src={profile} />
             </div>
