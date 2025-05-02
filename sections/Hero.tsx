@@ -15,7 +15,7 @@ export default function Hero() {
       {/* link */}
       <a
         href="mailto:natnael.dev101@gmail.com"
-        className="w-[160px] flex items-center gap-x-1 border-2 border-[#4040407c]  rounded-xl px-6 py-3 hover:bg-blue-50 transition-colors"
+        className="w-[160px] flex items-center gap-x-1 border border-[#4040407c]  rounded-xl px-6 py-3 hover:bg-blue-50 transition-colors"
       >
         <ArrowUpRight size={20} />
         <span className="text-xl font-semibold cursor-pointer">Email Me</span>
@@ -33,10 +33,10 @@ export default function Hero() {
           </div>
 
           <div className="flex-1 space-y-2">
-            <h1 className="text-2xl font-bold text-gray-800  bg-[#FBFBFA] border-2 border-[#4040407c] w-fit p-2 rounded-3xl rounded-bl-none">
+            <h1 className="text-2xl font-bold text-gray-800  bg-[#FBFBFA] border border-[#4040407c] w-fit p-2 rounded-3xl rounded-bl-none">
               Hi, <span className="text-blue-400">Natnael</span> here.
             </h1>
-            <p className="text-gray-600 text-xl bg-[#FBFBFA] border-2 border-[#4040407c] w-fit p-3 rounded-3xl rounded-bl-none">
+            <p className="text-gray-600 text-xl bg-[#FBFBFA] border border-[#4040407c] w-fit p-3 rounded-3xl rounded-bl-none">
               Frontend developer with 2 years of experience building responsive,
               high-quality interfaces using React, Next.js, and TypeScript.
             </p>
