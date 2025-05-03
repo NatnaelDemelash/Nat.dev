@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/sections/Hero';
+import Projects from '@/sections/Projects';
 import TechStack from '@/sections/TechStacks';
 import React from 'react';
 
@@ -10,6 +11,7 @@ export default function Home() {
       <main className="px-6">
         <Hero />
         <TechStack />
+        <Projects />
       </main>
     </div>
   );
