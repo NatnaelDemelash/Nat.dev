@@ -2,6 +2,7 @@ import { ArrowUpRight, Check, CheckCheck } from 'lucide-react';
 import Image from 'next/image';
 
 import profile from '@/public/profile.png';
+import { SocialLinks } from '@/components/SocialLinks';
 
 export default function Hero() {
   return (
@@ -51,6 +52,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <SocialLinks />
     </section>
   );
 }

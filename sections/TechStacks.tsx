@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-
 import profile from '@/public/profile.png';
 import { motion } from 'framer-motion';
 import { Minus } from 'lucide-react';
@@ -27,22 +26,21 @@ const stacks = [
   { name: 'Vite', icon: SiVite },
   { name: 'Firebase', icon: SiFirebase },
   { name: 'Jira', icon: SiAtlassian },
-  { name: 'Webflow', icon: SiWebflow },
 ];
 
 export default function TechStack() {
   return (
-    <section className="h-screen bg-white flex flex-col">
-      <div className="flex items-center gap-1">
-        <h2 className="text-2xl pl-8 mb-4 text-blue-400 font-semibold">
-          Tech Stack
-        </h2>
-        <Minus />
+    <section className="min-h-screen bg-white flex flex-col px-4 py-8">
+      {/* Title */}
+      <div className="flex items-center gap-2 mb-8">
+        <h2 className="text-2xl text-blue-400 font-semibold">Tech Stack</h2>
+        <Minus className="text-blue-400" />
       </div>
 
-      <div className="flex">
+      {/* Content */}
+      <div className="flex flex-col md:flex-row">
         {/* Left: Tech Stack */}
-        <div className="w-[45%] border-r border-gray-200 p-8 grid grid-cols-3 gap-x-4 gap-y-6 overflow-y-auto">
+        <div className="md:w-[45%] w-full border-b md:border-b-0 md:border-r border-gray-200 p-4 md:p-8 grid grid-cols-3 gap-x-4 gap-y-6">
           {stacks.map((stack, idx) => {
             const Icon = stack.icon;
             return (
@@ -50,34 +48,41 @@ export default function TechStack() {
                 key={idx}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className=""
               >
-                <div className="flex items-center gap-2 border p-1.5 rounded-xl border-slate-400">
+                <div className="flex flex-col items-center justify-center sm:justify-start gap-2 border p-2 rounded-xl border-slate-400">
+                  {/* Icon */}
                   <div className="w-7 h-7 flex items-center justify-center">
                     <Icon className="text-black" size={24} />
                   </div>
-                  <p className="text-black text-sm font-medium">{stack.name}</p>
+
+                  {/* Stack Name */}
+                  <p className="hidden sm:block text-black text-sm font-medium">
+                    {stack.name}
+                  </p>
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Right: (Empty for now, you will add Projects Section later) */}
+        {/* Right: About Section */}
+        <div className="md:w-[55%] w-full p-4 md:p-8 flex flex-col items-center md:items-end justify-center mt-8 md:mt-0">
+          {/* Avatar */}
+          <div className="w-20 h-20 mb-6 rounded-full bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden hover:border-2 hover:border-blue-300">
+            <Image
+              alt="profile pic"
+              src={profile}
+              className="-scale-x-100 object-cover"
+            />
+          </div>
 
-        <div className="w-[55%] p-8 flex flex-col items-end justify-center">
           {/* Description */}
-          <p className="text-gray-700 text-lg leading-relaxed max-w-md">
+          <p className="text-gray-700 text-lg leading-relaxed max-w-md text-center md:text-right">
             I'm a front-end developer who focuses on turning ideas into clear,
             functional user interfaces. I work with modern frameworks to build
             responsive and user-friendly websites. Open to collaboration on
             practical and well-designed projects.
           </p>
-          {/* Avatar */}
-          <div className="w-20 h-20 md:mr-10 rounded-full  bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden hover:border-2 hover:border-blue-300">
-            {/* <span className="text-2xl font-bold text-blue-500">N</span> */}
-            <Image alt="profile pic" src={profile} className="-scale-x-100" />
-          </div>
         </div>
       </div>
     </section>
