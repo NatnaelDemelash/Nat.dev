@@ -37,7 +37,7 @@ const Navbar = () => {
           }
           flex bg-white backdrop-blur-2xl rounded-lg  p-4
           flex-col items-start gap-4
-          sm:flex-row sm:items-center sm:gap-10 md:gap-14
+          sm:flex-row sm:items-center sm:gap-10 md:gap-12
         `}
         style={{
           left: 'auto',
@@ -49,7 +49,7 @@ const Navbar = () => {
             key={text}
             href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
             onClick={() => setIsOpen(false)}
-            className="font-medium text-lg md:text-xl hover:scale-110 transition-all duration-200"
+            className="font-medium text-lg md:text-lg hover:scale-110 transition-all duration-200"
           >
             {text}
           </Link>

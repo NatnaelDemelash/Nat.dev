@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import ScrambleText from './ScrambleText';
 
 const footerLinks = [
   { name: 'GitHub', href: 'https://github.com/NatnaelDemelash' },
@@ -19,7 +20,7 @@ export default function Footer() {
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
           >
-            {name}
+            <ScrambleText text={name} />
           </Link>
         ))}
       </nav>

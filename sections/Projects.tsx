@@ -1,5 +1,6 @@
 import { FaGithub } from 'react-icons/fa';
 import React from 'react';
+import { Minus } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
@@ -37,7 +38,10 @@ export default function Projects() {
 
   return (
     <section className="min-h-screen p-6">
-      <h1 className="text-center text-3xl font-semibold mb-12">Recent Works</h1>
+      <div className="flex items-center gap-2 mb-8">
+        <h2 className="text-2xl text-blue-400  uppercase">Projects</h2>
+        <Minus className="text-blue-400" />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
         {projects.map((project, index) => (

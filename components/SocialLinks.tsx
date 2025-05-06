@@ -5,17 +5,17 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/your-username',
+    href: 'https://github.com/NatnaelDemelash',
     icon: Github,
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/your-profile/',
+    href: 'https://www.linkedin.com/in/natnaeldemelash/',
     icon: Linkedin,
   },
   {
     name: 'Email',
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:natnael.dev101@gmail.com',
     icon: Mail,
   },
 ];

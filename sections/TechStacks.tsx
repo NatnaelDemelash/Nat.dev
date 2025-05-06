@@ -33,7 +33,7 @@ export default function TechStack() {
     <section className="min-h-screen bg-white flex flex-col px-4 py-8">
       {/* Title */}
       <div className="flex items-center gap-2 mb-8">
-        <h2 className="text-2xl text-blue-400 font-semibold">Tech Stack</h2>
+        <h2 className="text-2xl text-blue-400 ">Works With</h2>
         <Minus className="text-blue-400" />
       </div>
 
