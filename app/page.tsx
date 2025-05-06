@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import Experience from '@/sections/Experience';
 import Hero from '@/sections/Hero';
 import Projects from '@/sections/Projects';
 import TechStack from '@/sections/TechStacks';
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <TechStack />
         <Projects />
+        <Experience />
       </main>
       <Footer />
     </div>
