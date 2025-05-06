@@ -56,7 +56,7 @@ export default function TechStack() {
                   </div>
 
                   {/* Stack Name */}
-                  <p className="hidden sm:block text-black text-sm font-medium">
+                  <p className="hidden sm:block text-gray-800 text-sm font-semibold">
                     {stack.name}
                   </p>
                 </div>
