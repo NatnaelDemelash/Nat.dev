@@ -62,8 +62,11 @@ export default function Experience() {
               </div>
 
               {/* Title */}
-              <span className="text-sm font-mono text-gray-400 tracking-wide uppercase">
-                {exp.title}
+              <span className="text-sm font-mono text-gray-800 tracking-wide uppercase relative inline-block">
+                <span className="relative z-10 pl-3 text-white">
+                  {exp.title}
+                </span>
+                <span className="absolute bottom-0 left-0 w-[20%] h-4 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 z-0" />
               </span>
 
               {/* Description */}

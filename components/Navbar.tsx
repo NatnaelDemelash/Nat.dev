@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* Menu Button */}
       <button
         onClick={toggleMenu}
-        className="p-3 rounded-lg bg-black text-white z-50"
+        className="p-3 rounded-lg bg-black text-white z-50 cursor-pointer"
         aria-label="Toggle Menu"
       >
         {isOpen ? <X size={24} /> : <Equal size={24} />}
@@ -44,7 +44,7 @@ const Navbar = () => {
           right: 40, // aligns the menu left of the hamburger on desktop
         }}
       >
-        {['Home', 'Stacks', 'Works', 'Contact'].map((text) => (
+        {['Home', 'Stacks', 'Projects', 'Careers'].map((text) => (
           <Link
             key={text}
             href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
