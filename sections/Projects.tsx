@@ -5,34 +5,36 @@ import { Minus } from 'lucide-react';
 export default function Projects() {
   const projects = [
     {
-      title: 'Portfolio Website',
-      description: 'A personal portfolio to showcase my projects and skills.',
-      tech: ['Next.js', 'TailwindCSS', 'Framer Motion'],
-      image: 'https://via.placeholder.com/400x250',
+      title: 'Omni Food',
+      description:
+        'An AI based tech company which majorly focuses on consumer well-being through a healthy diet.',
+      tech: ['React', 'TailwindCSS', 'Framer Motion'],
+      image: '/project1.png',
       github: 'https://github.com/example/portfolio',
     },
     {
-      title: 'Task Manager App',
+      title: 'Pizzeria',
       description:
-        'Manage daily tasks with authentication and real-time updates.',
+        'Designed and developed a responsive website for a local pizza shop, with a focus on user-friendly navigation and visual appeal.',
       tech: ['React', 'Firebase', 'Redux'],
-      image: 'https://via.placeholder.com/400x250',
-      github: 'https://github.com/example/task-manager',
+      image: '/project2.png',
+      github: 'https://github.com/example/portfolio',
     },
     {
-      title: 'E-commerce Platform',
-      description: 'A modern e-commerce platform with Stripe integration.',
-      tech: ['Vue.js', 'Vite', 'Stripe'],
-      image: 'https://via.placeholder.com/400x250',
-      github: 'https://github.com/example/e-commerce',
-    },
-    {
-      title: 'Blog CMS',
+      title: 'Aurora_Aisel Shop',
       description:
-        'A full CMS where users can create, edit, and publish blogs.',
-      tech: ['Next.js', 'GraphQL', 'TailwindCSS'],
-      image: 'https://via.placeholder.com/400x250',
-      github: 'https://github.com/example/blog-cms',
+        'Designed and developed a fully functional e-commerce website for a local clothing brand, with a focus on user-friendly navigation.',
+      tech: ['React', 'Vite', 'Stripe'],
+      image: '/project3.png',
+      github: 'https://github.com/example/portfolio',
+    },
+    {
+      title: 'Puluk Travel',
+      description:
+        'Developed a fully functional travel website for a local tourism company.',
+      tech: ['React', 'TailwindCSS', 'TypeScript'],
+      image: '/project4.png',
+      github: 'https://github.com/example/portfolio',
     },
   ];
 

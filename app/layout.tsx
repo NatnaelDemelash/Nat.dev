@@ -11,8 +11,8 @@ const darkerGrotesque = Darker_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: 'NatiDev',
-  description: 'A brand new portfolio',
+  title: 'Natnael Demelash',
+  description: 'A personal portfolio site',
 };
 
 export default function RootLayout({
