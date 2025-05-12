@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -52,7 +52,8 @@ body {
 
 /* 🔒 Force light theme - override dark mode settings */
 @media (prefers-color-scheme: dark) {
-  :root { /* still white */ /* still dark text */
+  :root {
+    /* still white */ /* still dark text */
   }
 
   body {

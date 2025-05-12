@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 import { Darker_Grotesque } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
@@ -27,15 +26,7 @@ export default function RootLayout({
       className={`${darkerGrotesque.variable}`}
       suppressHydrationWarning
     >
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-        >
-          {children}
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,47 +1,47 @@
-import { FaGithub } from "react-icons/fa";
-import React from "react";
-import { Minus } from "lucide-react";
+import { FaGithub } from 'react-icons/fa';
+import React from 'react';
+import { Minus } from 'lucide-react';
 
 export default function Projects() {
   const projects = [
     {
-      title: "Omni Food",
+      title: 'Omni Food',
       description:
-        "An AI based tech company which majorly focuses on consumer well-being through a healthy diet.",
-      tech: ["React", "TailwindCSS", "Framer Motion"],
-      image: "/project1.png",
-      github: "https://github.com/example/portfolio",
+        'An AI based tech company which majorly focuses on consumer well-being through a healthy diet.',
+      tech: ['React', 'TailwindCSS', 'Framer Motion'],
+      image: '/project1.png',
+      github: 'https://github.com/example/portfolio',
     },
     {
-      title: "Pizzeria",
+      title: 'Pizzeria',
       description:
-        "Designed and developed a responsive website for a local pizza shop, with a focus on user-friendly navigation and visual appeal.",
-      tech: ["React", "Firebase", "Redux"],
-      image: "/project2.png",
-      github: "https://github.com/example/portfolio",
+        'Designed and developed a responsive website for a local pizza shop, with a focus on user-friendly navigation and visual appeal.',
+      tech: ['React', 'Firebase', 'Redux'],
+      image: '/project2.png',
+      github: 'https://github.com/example/portfolio',
     },
     {
-      title: "Aurora_Aisel Shop",
+      title: 'Aurora_Aisel Shop',
       description:
-        "Designed and developed a fully functional e-commerce website for a local clothing brand, with a focus on user-friendly navigation.",
-      tech: ["React", "Vite", "Stripe"],
-      image: "/project3.png",
-      github: "https://github.com/example/portfolio",
+        'Designed and developed a fully functional e-commerce website for a local clothing brand, with a focus on user-friendly navigation.',
+      tech: ['React', 'Vite', 'Stripe'],
+      image: '/project3.png',
+      github: 'https://github.com/example/portfolio',
     },
     {
-      title: "Puluk Travel",
+      title: 'Puluk Travel',
       description:
-        "Developed a fully functional travel website for a local tourism company.",
-      tech: ["React", "TailwindCSS", "TypeScript"],
-      image: "/project4.png",
-      github: "https://github.com/example/portfolio",
+        'Developed a fully functional travel website for a local tourism company.',
+      tech: ['React', 'TailwindCSS', 'TypeScript'],
+      image: '/project4.png',
+      github: 'https://github.com/example/portfolio',
     },
   ];
 
   return (
     <section className="min-h-screen p-6" id="projects">
       <div className="flex items-center gap-2 mb-8">
-        <h2 className="text-2xl text-blue-400  uppercase">Projects</h2>
+        <h2 className="text-2xl text-blue-400 uppercase">Projects</h2>
         <Minus className="text-blue-400" />
       </div>
 
@@ -75,7 +75,7 @@ export default function Projects() {
                 {project.tech.map((techItem, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 text-xs bg-gray-100 rounded-md"
+                    className="px-2 py-1 text-xs bg-gray-100 text-black rounded-md"
                   >
                     {techItem}
                   </span>

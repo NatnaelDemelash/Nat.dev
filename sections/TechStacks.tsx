@@ -13,8 +13,8 @@ import {
   SiVite,
   SiFirebase,
   SiAtlassian,
-  SiWebflow,
 } from 'react-icons/si';
+import { cn } from '@/lib/utils';
 
 const stacks = [
   { name: 'React', icon: SiReact },
@@ -30,10 +30,7 @@ const stacks = [
 
 export default function TechStack() {
   return (
-    <section
-      className="min-h-screen bg-white flex flex-col px-4 py-8 mb-5"
-      id="stacks"
-    >
+    <section className="min-h-screen flex flex-col px-4 py-8 mb-5" id="stacks">
       {/* Title */}
       <div className="flex items-center gap-2 mb-8">
         <h2 className="text-2xl text-blue-400 ">Works With</h2>
@@ -52,10 +49,19 @@ export default function TechStack() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="flex flex-col items-center justify-center sm:justify-start gap-2 border p-2 rounded-xl border-slate-400">
+                <div
+                  className={cn(
+                    'flex flex-col items-center justify-center sm:justify-start gap-2 border p-2 rounded-xl border-slate-400'
+                  )}
+                >
                   {/* Icon */}
                   <div className="w-7 h-7 flex items-center justify-center">
-                    <Icon className="text-black" size={24} />
+                    <Icon
+                      className="text-black"
+                      size={24}
+                      fill="currentColor"
+                      stroke="currentColor"
+                    />
                   </div>
 
                   {/* Stack Name */}
@@ -88,6 +94,7 @@ export default function TechStack() {
           </p>
         </div>
       </div>
+
       <h2 className="text-xl ml-6 my-4 uppercase font-medium">
         Github Activity
       </h2>

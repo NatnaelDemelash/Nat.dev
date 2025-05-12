@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Equal, X, AudioWaveform } from 'lucide-react';
 import Link from 'next/link';
 import { Link as ScrollLink } from 'react-scroll';
-import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +43,7 @@ const Navbar = () => {
               ? 'opacity-100 scale-100'
               : 'opacity-0 scale-95 pointer-events-none'
           }
-          flex bg-white backdrop-blur-2xl rounded-lg  p-4
+          flex bg-white dark:bg-transparent dark:text-white backdrop-blur-2xl rounded-lg  p-4
           flex-col items-start gap-4
           sm:flex-row sm:items-center sm:gap-10 md:gap-12
         `}
@@ -66,8 +65,6 @@ const Navbar = () => {
             {text}
           </ScrollLink>
         ))}
-        {/* Theme Toggle */}
-        <ThemeToggle />
       </nav>
 
       {/* Backdrop overlay for mobile */}

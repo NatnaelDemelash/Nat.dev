@@ -1,8 +1,8 @@
-import { ArrowUpRight, Check, CheckCheck } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Check, CheckCheck } from 'lucide-react';
+import Image from 'next/image';
 
-import profile from "@/public/profile.png";
-import { SocialLinks } from "@/components/SocialLinks";
+import profile from '@/public/profile.png';
+import { SocialLinks } from '@/components/SocialLinks';
 
 export default function Hero() {
   return (
