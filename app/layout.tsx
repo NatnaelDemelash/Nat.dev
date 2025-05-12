@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 import { Darker_Grotesque } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ['latin'],
@@ -21,8 +22,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${darkerGrotesque.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${darkerGrotesque.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

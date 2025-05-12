@@ -1,8 +1,8 @@
-"use client";
-import Image from "next/image";
-import profile from "@/public/profile.png";
-import { motion } from "framer-motion";
-import { Minus } from "lucide-react";
+'use client';
+import Image from 'next/image';
+import profile from '@/public/profile.png';
+import { motion } from 'framer-motion';
+import { Minus } from 'lucide-react';
 import {
   SiReact,
   SiTypescript,
@@ -14,24 +14,24 @@ import {
   SiFirebase,
   SiAtlassian,
   SiWebflow,
-} from "react-icons/si";
+} from 'react-icons/si';
 
 const stacks = [
-  { name: "React", icon: SiReact },
-  { name: "TypeScript", icon: SiTypescript },
-  { name: "Next.js", icon: SiNextdotjs },
-  { name: "TailwindCSS", icon: SiTailwindcss },
-  { name: "Redux", icon: SiRedux },
-  { name: "VueJS", icon: SiVuedotjs },
-  { name: "Vite", icon: SiVite },
-  { name: "Firebase", icon: SiFirebase },
-  { name: "Jira", icon: SiAtlassian },
+  { name: 'React', icon: SiReact },
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'Next.js', icon: SiNextdotjs },
+  { name: 'TailwindCSS', icon: SiTailwindcss },
+  { name: 'Redux', icon: SiRedux },
+  { name: 'VueJS', icon: SiVuedotjs },
+  { name: 'Vite', icon: SiVite },
+  { name: 'Firebase', icon: SiFirebase },
+  { name: 'Jira', icon: SiAtlassian },
 ];
 
 export default function TechStack() {
   return (
     <section
-      className="min-h-screen bg-white flex flex-col px-4 py-8"
+      className="min-h-screen bg-white flex flex-col px-4 py-8 mb-5"
       id="stacks"
     >
       {/* Title */}
@@ -50,7 +50,7 @@ export default function TechStack() {
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="flex flex-col items-center justify-center sm:justify-start gap-2 border p-2 rounded-xl border-slate-400">
                   {/* Icon */}

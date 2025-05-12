@@ -1,19 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Equal, X, AudioWaveform } from "lucide-react";
-import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
+import { useState } from 'react';
+import { Equal, X, AudioWaveform } from 'lucide-react';
+import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const sections = [
-    { text: "Home", id: "home" },
-    { text: "Stacks", id: "stacks" },
-    { text: "Projects", id: "projects" },
-    { text: "Careers", id: "careers" },
+    { text: 'Home', id: 'home' },
+    { text: 'Stacks', id: 'stacks' },
+    { text: 'Projects', id: 'projects' },
+    { text: 'Careers', id: 'careers' },
   ];
 
   return (
@@ -40,31 +41,33 @@ const Navbar = () => {
         className={`absolute top-full md:-mt-[70px] md:mr-14 border border-[#8282823c] transition-all duration-300 ease-in-out z-40
           ${
             isOpen
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-95 pointer-events-none"
+              ? 'opacity-100 scale-100'
+              : 'opacity-0 scale-95 pointer-events-none'
           }
           flex bg-white backdrop-blur-2xl rounded-lg  p-4
           flex-col items-start gap-4
           sm:flex-row sm:items-center sm:gap-10 md:gap-12
         `}
         style={{
-          left: "auto",
+          left: 'auto',
           right: 40, // aligns the menu left of the hamburger on desktop
         }}
       >
         {sections.map(({ text, id }) => (
           <ScrollLink
             key={id}
-            to={id} // Link to the section ID
-            smooth={true} // Enables smooth scrolling
-            duration={1000} // Duration of the scroll animation (500ms)
+            to={id}
+            smooth={true}
+            duration={1000}
             spy={true} // Track when the section is in view
             onClick={() => setIsOpen(false)} // Close the menu when a link is clicked
-            className="font-medium text-lg md:text-lg hover:scale-110 transition-all duration-200"
+            className="font-medium text-lg cursor-pointer md:text-lg hover:scale-110 transition-all duration-200"
           >
             {text}
           </ScrollLink>
         ))}
+        {/* Theme Toggle */}
+        <ThemeToggle />
       </nav>
 
       {/* Backdrop overlay for mobile */}
