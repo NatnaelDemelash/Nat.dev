@@ -88,6 +88,13 @@ export default function TechStack() {
           </p>
         </div>
       </div>
+      <h2 className="text-xl ml-6 my-4 uppercase font-medium">
+        Github Activity
+      </h2>
+      <img
+        src="https://ghchart.rshah.org/NatnaelDemelash"
+        alt="GitHub Activity Chart"
+      />
     </section>
   );
 }
