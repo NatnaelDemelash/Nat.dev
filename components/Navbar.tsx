@@ -1,12 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Equal, X, AudioWaveform } from 'lucide-react';
-import Link from 'next/link';
+import { useState } from "react";
+import { Equal, X, AudioWaveform } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen((prev) => !prev);
+
+  const sections = [
+    { text: "Home", id: "home" },
+    { text: "Stacks", id: "stacks" },
+    { text: "Projects", id: "projects" },
+    { text: "Careers", id: "careers" },
+  ];
 
   return (
     <header className="relative z-50 flex items-center justify-between p-4">
@@ -32,22 +39,22 @@ const Navbar = () => {
         className={`absolute top-full md:-mt-[70px] md:mr-14 border border-[#8282823c] transition-all duration-300 ease-in-out z-40
           ${
             isOpen
-              ? 'opacity-100 scale-100'
-              : 'opacity-0 scale-95 pointer-events-none'
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-95 pointer-events-none"
           }
           flex bg-white backdrop-blur-2xl rounded-lg  p-4
           flex-col items-start gap-4
           sm:flex-row sm:items-center sm:gap-10 md:gap-12
         `}
         style={{
-          left: 'auto',
+          left: "auto",
           right: 40, // aligns the menu left of the hamburger on desktop
         }}
       >
-        {['Home', 'Stacks', 'Projects', 'Careers'].map((text) => (
+        {sections.map(({ text, id }) => (
           <Link
-            key={text}
-            href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+            key={id}
+            href={`#${id}`} // Using the ID for the anchor link
             onClick={() => setIsOpen(false)}
             className="font-medium text-lg md:text-lg hover:scale-110 transition-all duration-200"
           >

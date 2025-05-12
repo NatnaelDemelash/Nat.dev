@@ -1,12 +1,12 @@
-import { ArrowUpRight, Check, CheckCheck } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowUpRight, Check, CheckCheck } from "lucide-react";
+import Image from "next/image";
 
-import profile from '@/public/profile.png';
-import { SocialLinks } from '@/components/SocialLinks';
+import profile from "@/public/profile.png";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Hero() {
   return (
-    <section className="h-screen mt-20 flex flex-col space-y-6">
+    <section className="h-screen mt-20 flex flex-col space-y-6" id="#hero">
       <div className="relative">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold max-w-2xl relative z-10">
           Coding visuals until they tell a story

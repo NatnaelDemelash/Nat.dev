@@ -1,33 +1,33 @@
-import React from 'react';
-import { ArrowUpRight, Minus } from 'lucide-react'; // optional icon library (or use your own)
+import React from "react";
+import { ArrowUpRight, Minus } from "lucide-react"; // optional icon library (or use your own)
 
 export default function Experience() {
   const experiences = [
     {
-      date: '2024 – Present',
-      company: 'GoodayOn',
-      companyLink: 'https://gooday.io',
-      title: 'Software Engineer',
+      date: "2024 – Present",
+      company: "GoodayOn",
+      companyLink: "https://gooday.io",
+      title: "Software Engineer",
       description: [
-        'Contributed to the development of web applications using JavaScript, Vue.js, and React.js.',
-        'Worked closely with product managers to prioritize features and enhancements.',
+        "Contributed to the development of web applications using JavaScript, Vue.js, and React.js.",
+        "Worked closely with product managers to prioritize features and enhancements.",
       ],
-      techStack: ['Vue', 'Tailwind', 'React', 'Firebase'],
+      techStack: ["Vue", "Tailwind", "React", "Firebase"],
     },
     {
-      date: '2021 – 2023',
-      company: 'GoodayOn',
-      companyLink: 'https://gooday.io',
-      title: 'Operation Team Lead',
+      date: "2021 – 2023",
+      company: "GoodayOn",
+      companyLink: "https://gooday.io",
+      title: "Operation Team Lead",
       description: [
-        'Successfully utilized CRM software tools, including Trello and Jira, to streamline and enhance project management processes.',
+        "Successfully utilized CRM software tools, including Trello and Jira, to streamline and enhance project management processes.",
       ],
-      techStack: ['Vue', 'Firebase'],
+      techStack: ["Vue", "Firebase"],
     },
   ];
 
   return (
-    <section className="flex flex-col gap-10 mt-10 mb-12">
+    <section className="mt-32 flex flex-col gap-10  mb-12" id="careers">
       <div className="flex items-center gap-2 mb-6">
         <h2 className="text-2xl text-blue-400 uppercase">Careers</h2>
         <Minus className="text-blue-400" />
