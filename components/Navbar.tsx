@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Equal, X, AudioWaveform } from "lucide-react";
 import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,14 +53,17 @@ const Navbar = () => {
         }}
       >
         {sections.map(({ text, id }) => (
-          <Link
+          <ScrollLink
             key={id}
-            href={`#${id}`} // Using the ID for the anchor link
-            onClick={() => setIsOpen(false)}
+            to={id} // Link to the section ID
+            smooth={true} // Enables smooth scrolling
+            duration={1000} // Duration of the scroll animation (500ms)
+            spy={true} // Track when the section is in view
+            onClick={() => setIsOpen(false)} // Close the menu when a link is clicked
             className="font-medium text-lg md:text-lg hover:scale-110 transition-all duration-200"
           >
             {text}
-          </Link>
+          </ScrollLink>
         ))}
       </nav>
 
