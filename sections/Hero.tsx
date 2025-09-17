@@ -1,58 +1,72 @@
-import { ArrowUpRight, Check, CheckCheck } from 'lucide-react';
-import Image from 'next/image';
+'use client';
 
+import { CheckCheck } from 'lucide-react';
+import Image from 'next/image';
 import profile from '@/public/profile.png';
 import { SocialLinks } from '@/components/SocialLinks';
+import RotatingText from '@/components/RotatingText';
 
 export default function Hero() {
   return (
-    <section className="h-screen mt-20 flex flex-col space-y-6" id="#hero">
-      <div className="relative">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold max-w-2xl relative z-10">
-          Coding visuals until they tell a story
-        </h1>
-        <div className="hidden md:block absolute -left-4 top-2 w-[44%] h-[50%]  border-2 border-blue-500 rounded-full opacity-70 transform  z-0" />
-      </div>
-      {/* link */}
-      <a
-        href="mailto:natnael.dev101@gmail.com"
-        className="w-[160px] flex items-center gap-x-1 border border-[#4040407c]  rounded-xl px-6 py-3 hover:bg-blue-50 transition-colors"
-      >
-        <ArrowUpRight size={20} />
-        <span className="text-xl font-semibold cursor-pointer">Email Me</span>
-      </a>
+    <section
+      className="min-h-screen flex flex-col justify-center px-4 md:px-8 lg:px-12 py-4"
+      id="hero"
+    >
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-24">
+        {/* Left Column */}
+        <div className="flex-1 max-w-2xl text-center lg:text-left space-y-4">
+          <h1 className="text-6xl font-bold leading-[1.1] md:leading-[1.15] lg:leading-[1.2]">
+            <span className="text-blue-500">Coding visuals</span> until they
+            tell a story
+          </h1>
+          <p className="text-base md:text-lg text-gray-600 max-w-md mx-auto lg:mx-0">
+            A frontend developer dedicated to creating high-quality, responsive
+            interfaces that are not only functional but also beautiful and
+            intuitive.
+          </p>
 
-      {/* Profile Card with Avatar */}
-      <div className="max-w-4xl p-6 border-x border-slate-200 mt-8">
-        <div className="flex flex-col sm:flex-row items-start gap-4">
-          {/* Avatar Circle */}
-          <div className="flex-shrink-0">
-            <div className="w-40 h-40 md:mr-10 rounded-full  bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden hover:border-2 hover:border-blue-300">
-              {/* <span className="text-2xl font-bold text-blue-500">N</span> */}
-              <Image alt="profile pic" src={profile} />
-            </div>
-          </div>
-
-          <div className="flex-1 space-y-2">
-            <h1 className="text-2xl font-bold text-gray-800  bg-[#FBFBFA] border border-[#4040407c] w-fit p-2 rounded-3xl rounded-bl-none">
-              Hi, <span className="text-blue-400">Natnael</span> here.
-            </h1>
-            <p className="text-gray-600 text-xl bg-[#FBFBFA] border border-[#4040407c] w-fit p-3 rounded-3xl rounded-bl-none">
-              Frontend developer with 2 years of experience building responsive,
-              high-quality interfaces using React, Next.js, and TypeScript.
-            </p>
-
-            {/* Timestamp with double checkmark */}
-            <div className="flex items-center text-sm text-gray-500">
-              <span className="mr-1">4m ago</span>
-              <div className="flex items-center">
-                <CheckCheck className="w-4 h-4 text-green-500" />
-              </div>
+          {/* Rotating Features */}
+          <div className="flex justify-center lg:justify-start mt-4">
+            <div className="flex-1 min-w-[220px] max-w-sm">
+              <RotatingText />
             </div>
           </div>
         </div>
+
+        {/* Right Column: Avatar + Chat Bubbles */}
+        <div className="flex-1 flex flex-col items-center lg:items-start gap-3 w-full max-w-md">
+          {/* Avatar */}
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-blue-200">
+            <Image
+              alt="profile pic"
+              src={profile}
+              width={144}
+              height={144}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Chat Bubbles */}
+          <div className="flex flex-col space-y-3 w-full">
+            <div className="self-start bg-[#FBFBFA] border border-[#4040407c] p-3 rounded-3xl rounded-bl-none shadow-sm">
+              <p className="text-gray-700 text-sm md:text-base">
+                Frontend developer with 2 years of experience building
+                high-quality interfaces using React, Next.js, and TypeScript.
+              </p>
+            </div>
+
+            <div className="self-start flex items-center gap-2 bg-[#e6ffed] border border-green-300 p-2 rounded-3xl rounded-bl-none shadow-sm text-green-600 text-sm font-medium">
+              <CheckCheck className="w-4 h-4" />
+              <span>Available for new projects</span>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-4 flex gap-4">
+            <SocialLinks />
+          </div>
+        </div>
       </div>
-      <SocialLinks />
     </section>
   );
 }
