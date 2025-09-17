@@ -1,6 +1,4 @@
 'use client';
-import Image from 'next/image';
-import profile from '@/public/profile.png';
 import { motion } from 'framer-motion';
 import { Minus } from 'lucide-react';
 import {
@@ -8,100 +6,76 @@ import {
   SiTypescript,
   SiNextdotjs,
   SiTailwindcss,
-  SiRedux,
+  SiNodedotjs,
   SiVuedotjs,
   SiVite,
   SiFirebase,
   SiAtlassian,
+  SiFigma,
 } from 'react-icons/si';
-import { cn } from '@/lib/utils';
+import { RiSupabaseFill } from 'react-icons/ri';
+import { FaGitAlt } from 'react-icons/fa';
 
 const stacks = [
-  { name: 'React', icon: SiReact },
-  { name: 'TypeScript', icon: SiTypescript },
-  { name: 'Next.js', icon: SiNextdotjs },
-  { name: 'TailwindCSS', icon: SiTailwindcss },
-  { name: 'Redux', icon: SiRedux },
-  { name: 'VueJS', icon: SiVuedotjs },
-  { name: 'Vite', icon: SiVite },
-  { name: 'Firebase', icon: SiFirebase },
-  { name: 'Jira', icon: SiAtlassian },
+  { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
+  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { name: 'TailwindCSS', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'Node.js', icon: SiNodedotjs, color: '#68A063' }, // <-- Updated name and color
+  { name: 'Vue.js', icon: SiVuedotjs, color: '#4FC08D' },
+  { name: 'Vite', icon: SiVite, color: '#646CFF' },
+  { name: 'Supabase', icon: RiSupabaseFill, color: '#3ECF8E' },
+  { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
+  { name: 'Jira', icon: SiAtlassian, color: '#0052CC' },
+  { name: 'Git', icon: FaGitAlt, color: '#F05032' },
+  { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
 ];
 
 export default function TechStack() {
   return (
-    <section className="min-h-screen flex flex-col px-4 py-8 mb-5" id="stacks">
+    <section
+      className="min-h-screen flex flex-col justify-center px-4 py-16"
+      id="stacks"
+    >
       {/* Title */}
-      <div className="flex items-center gap-2 mb-8">
-        <h2 className="text-2xl text-blue-400 ">Works With</h2>
-        <Minus className="text-blue-400" />
+      <div className="flex items-center justify-center gap-2 mb-12 md:mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center">
+          Tech Stack
+        </h2>
+        <Minus className="text-gray-400 dark:text-gray-500" />
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col md:flex-row">
-        {/* Left: Tech Stack */}
-        <div className="md:w-[45%] w-full border-b md:border-b-0 md:border-r border-gray-200 p-4 md:p-8 grid grid-cols-3 gap-x-4 gap-y-6">
-          {stacks.map((stack, idx) => {
-            const Icon = stack.icon;
-            return (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                <div
-                  className={cn(
-                    'flex flex-col items-center justify-center sm:justify-start gap-2 border p-2 rounded-xl border-slate-400'
-                  )}
-                >
-                  {/* Icon */}
-                  <div className="w-7 h-7 flex items-center justify-center">
-                    <Icon
-                      className="text-black"
-                      size={24}
-                      fill="currentColor"
-                      stroke="currentColor"
-                    />
-                  </div>
-
-                  {/* Stack Name */}
-                  <p className="hidden sm:block text-gray-800 text-sm font-semibold">
-                    {stack.name}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Right: About Section */}
-        <div className="md:w-[55%] w-full p-4 md:p-8 flex flex-col items-center md:items-end justify-center mt-8 md:mt-0">
-          {/* Avatar */}
-          <div className="w-20 h-20 mb-6 rounded-full bg-blue-100 border border-gray-300 flex items-center justify-center overflow-hidden hover:border-2 hover:border-blue-300">
-            <Image
-              alt="profile pic"
-              src={profile}
-              className="-scale-x-100 object-cover"
-            />
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-700 text-lg leading-relaxed max-w-md text-center md:text-right">
-            I'm a front-end developer who focuses on turning ideas into clear,
-            functional user interfaces. I work with modern frameworks to build
-            responsive and user-friendly websites. Open to collaboration on
-            practical and well-designed projects.
-          </p>
-        </div>
+      {/* Grid of Tech Stacks */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 justify-center">
+        {stacks.map((stack, idx) => {
+          const Icon = stack.icon;
+          return (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{
+                scale: 1.1,
+                boxShadow: `0 0 15px ${stack.color}40`,
+                transition: { type: 'spring', stiffness: 300 },
+              }}
+              className="group flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm bg-white/20 dark:bg-gray-800/20 text-center"
+            >
+              <div className="w-12 h-12 flex items-center justify-center mb-2">
+                <Icon
+                  className="text-gray-900 dark:text-white"
+                  size={40}
+                  style={{ color: stack.color }}
+                />
+              </div>
+              <p className="font-semibold text-gray-800 dark:text-gray-100 mt-2">
+                {stack.name}
+              </p>
+            </motion.div>
+          );
+        })}
       </div>
-
-      <h2 className="text-xl ml-6 my-4 uppercase font-medium">
-        Github Activity
-      </h2>
-      <img
-        src="https://ghchart.rshah.org/NatnaelDemelash"
-        alt="GitHub Activity Chart"
-      />
     </section>
   );
 }
