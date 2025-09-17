@@ -1,95 +1,194 @@
-import React from "react";
-import { ArrowUpRight, Minus } from "lucide-react"; // optional icon library (or use your own)
+'use client';
+import React from 'react';
+import { Minus } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+// Data structure and constant as provided in the previous prompt.
+interface ExperienceType {
+  year: string;
+  role: string;
+  company: string;
+  description: string[];
+  technologies?: string[];
+}
+
+const EXPERIENCES: ExperienceType[] = [
+  {
+    year: 'JAN 2024 - Present',
+    role: 'Software Engineer',
+    company: 'GoodayOn',
+    description: [
+      'Designing and building internal tools that improve daily operations and team productivity.',
+      'Creating smart AI-driven automations and workflows using n8n to reduce repetitive tasks.',
+      'Developing custom Slack integrations for real-time collaboration and alerts.',
+      'Engineering seamless integrations across different platforms to streamline business processes.',
+      'Contributing to modern web applications with React, Vue, and Tailwind, ensuring responsive and maintainable code.',
+    ],
+    technologies: ['React', 'Vue', 'Tailwind', 'Firebase', 'n8n', 'Slack API'],
+  },
+  {
+    year: 'FEB 2021 - DEC 2023',
+    role: 'IT Support',
+    company: 'GoodayOn',
+    description: [
+      'Led the operations team while driving process improvements across multiple projects.',
+      'Implemented automations in Jira to optimize workflows and reduce manual effort.',
+      'Utilized Trello and Jira to manage projects, track progress, and improve team efficiency.',
+      'Collaborated with cross-functional teams to ensure smooth project execution and delivery.',
+    ],
+    technologies: ['Jira', 'Trello', 'Jira Automation'],
+  },
+  {
+    role: 'Junior Web Developer',
+    company: 'AAU(Internship)',
+    year: 'MAY 2019 - JUL 2019',
+    description: [
+      'Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.',
+      'Developed project concepts and maintained optimal workflow.',
+      'Worked with senior developers to manage large, complex design projects for corporate clients.',
+    ],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+  },
+];
+
+const experiencesLeft = EXPERIENCES.filter((_, index) => index % 2 === 0);
+const experiencesRight = EXPERIENCES.filter((_, index) => index % 2 !== 0);
 
 export default function Experience() {
-  const experiences = [
-    {
-      date: "2024 – Present",
-      company: "GoodayOn",
-      companyLink: "https://gooday.io",
-      title: "Software Engineer",
-      description: [
-        "Contributed to the development of web applications using JavaScript, Vue.js, and React.js.",
-        "Worked closely with product managers to prioritize features and enhancements.",
-      ],
-      techStack: ["Vue", "Tailwind", "React", "Firebase"],
-    },
-    {
-      date: "2021 – 2023",
-      company: "GoodayOn",
-      companyLink: "https://gooday.io",
-      title: "Operation Team Lead",
-      description: [
-        "Successfully utilized CRM software tools, including Trello and Jira, to streamline and enhance project management processes.",
-      ],
-      techStack: ["Vue", "Firebase"],
-    },
-  ];
-
   return (
-    <section className="mt-32 flex flex-col gap-10  mb-12" id="careers">
-      <div className="flex items-center gap-2 mb-6">
-        <h2 className="text-2xl text-blue-400 uppercase">Careers</h2>
-        <Minus className="text-blue-400" />
+    <section className="px-6 py-12 md:p-12 lg:p-20" id="careers">
+      {/* Section Title */}
+      <div className="flex items-center gap-2 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          Experience
+        </h2>
+        <Minus className="text-gray-400 dark:text-gray-500" />
       </div>
-      <div className="relative ml-4">
-        {/* Vertical timeline line */}
-        <div className="absolute left-[5.5px] top-0 h-full w-px bg-gray-200" />
 
-        {experiences.map((exp, index) => (
-          <div key={index} className="relative pl-6 mb-10 last:mb-0">
-            {/* Timeline Dot */}
-            <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-blue-500 z-10" />
+      {/* Experience Grid with Path */}
+      <div className="relative flex flex-col md:flex-row md:justify-center md:gap-12">
+        {/* Vertical Path Line (only on desktop) */}
+        <div className="absolute top-0 bottom-0 left-1/2 -ml-px w-px bg-gray-200 dark:bg-gray-800 hidden md:block" />
 
-            {/* Content */}
-            <div className="flex flex-col gap-2">
-              {/* Date */}
-              <span className="text-xs uppercase text-gray-400">
-                {exp.date}
-              </span>
+        {/* Left Column */}
+        <div className="flex flex-col w-full md:w-1/2">
+          {experiencesLeft.map((exp, index) => {
+            const originalIndex = EXPERIENCES.indexOf(exp);
+            return (
+              <motion.div
+                key={originalIndex}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: originalIndex * 0.15 }}
+                viewport={{ once: true, amount: 0.4 }}
+                className={`
+                  group relative flex flex-col gap-4 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800 backdrop-blur-sm bg-white/20 dark:bg-gray-800/20 hover:shadow-xl hover:translate-y-[-5px] transition-all duration-300
+                  mb-8 md:mb-16
+                `}
+              >
+                {/* Numbered Path Element (only on desktop) */}
+                <div className="absolute top-1/2 left-full -translate-y-1/2 flex items-center justify-center w-10 h-10 -ml-5 md:block hidden">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
+                    {EXPERIENCES.length - originalIndex}
+                  </div>
+                </div>
 
-              {/* Company */}
-              <div className="flex items-center gap-1">
-                <a
-                  href={exp.companyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-blue-400 hover:underline"
-                >
-                  {exp.company}
-                </a>
-                <ArrowUpRight size={16} className="text-blue-500" />
-              </div>
-
-              {/* Title */}
-              <span className="text-sm font-mono text-gray-800 tracking-wide uppercase relative inline-block">
-                <span className="relative z-10 pl-3 text-white">
-                  {exp.title}
-                </span>
-                <span className="absolute bottom-0 left-0 w-[20%] h-4 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 z-0" />
-              </span>
-
-              {/* Description */}
-              <ul className="list-disc list-inside text-gray-400 text-sm space-y-1">
-                {exp.description.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mt-2">
-                {exp.techStack.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 text-xs bg-gray-200 text-gray-800 rounded-md"
-                  >
-                    {tech}
+                {/* Card Content */}
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-gray-900 dark:text-white">
+                    {exp.role}
                   </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+                  <span className="font-semibold text-blue-500 dark:text-blue-400">
+                    @{exp.company}
+                  </span>
+                </div>
+
+                <span className="text-xs uppercase text-gray-400 dark:text-gray-500 font-medium">
+                  {exp.year}
+                </span>
+
+                <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 text-sm space-y-2">
+                  {exp.description.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+
+                {exp.technologies && (
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {exp.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Right Column */}
+        <div className="flex flex-col w-full md:w-1/2 md:mt-24">
+          {experiencesRight.map((exp, index) => {
+            const originalIndex = EXPERIENCES.indexOf(exp);
+            return (
+              <motion.div
+                key={originalIndex}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: originalIndex * 0.15 }}
+                viewport={{ once: true, amount: 0.4 }}
+                className={`
+                  group relative flex flex-col gap-4 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800 backdrop-blur-sm bg-white/20 dark:bg-gray-800/20 hover:shadow-xl hover:translate-y-[-5px] transition-all duration-300
+                  mb-8 md:mb-16
+                `}
+              >
+                {/* Numbered Path Element (only on desktop) */}
+                <div className="absolute top-1/2 right-full -translate-y-1/2 flex items-center justify-center w-10 h-10 -mr-5 md:block hidden">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
+                    {EXPERIENCES.length - originalIndex}
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="flex flex-col">
+                  <span className="text-lg font-bold text-gray-900 dark:text-white">
+                    {exp.role}
+                  </span>
+                  <span className="font-semibold text-blue-500 dark:text-blue-400">
+                    @{exp.company}
+                  </span>
+                </div>
+
+                <span className="text-xs uppercase text-gray-400 dark:text-gray-500 font-medium">
+                  {exp.year}
+                </span>
+
+                <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 text-sm space-y-2">
+                  {exp.description.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+
+                {exp.technologies && (
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {exp.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
