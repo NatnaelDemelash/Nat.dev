@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Equal, X, AudioWaveform } from 'lucide-react';
+import {
+  Equal,
+  X,
+  AudioWaveform,
+  TerminalIcon,
+  Code,
+  Terminal,
+} from 'lucide-react';
 import Link from 'next/link';
 import { Link as ScrollLink } from 'react-scroll';
 
@@ -17,60 +24,84 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="relative z-50 flex items-center justify-between p-4">
+    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 lg:px-12 py-4 backdrop-blur-md bg-white/80 dark:bg-gray-900/80">
       {/* Logo */}
-      <Link
-        href="/"
-        className="flex items-center p-2 transition-all duration-300 hover:rotate-180 hover:border-2 hover:border-[#333] hover:rounded-full"
-      >
-        <AudioWaveform size={24} className="" />
+      <Link href="/" className="flex items-center gap-2 group">
+        <Terminal
+          size={22}
+          className="text-blue-600 group-hover:rotate-6 transition-transform"
+        />
+        <span className="flex flex-col leading-tight">
+          <span className="font-bold text-gray-900 dark:text-white">
+            Natnael
+          </span>
+          <span className="text-xs text-gray-500 dark:text-gray-400">
+            Frontend Dev
+          </span>
+        </span>
       </Link>
 
       {/* Menu Button */}
       <button
         onClick={toggleMenu}
-        className="p-3 rounded-lg bg-black text-white z-50 cursor-pointer"
+        className="relative z-50 p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 text-gray-800 dark:text-white backdrop-blur-sm shadow-sm transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400"
         aria-label="Toggle Menu"
       >
         {isOpen ? <X size={24} /> : <Equal size={24} />}
       </button>
 
-      {/* Slide-in Menu */}
+      {/* Menu */}
       <nav
-        className={`absolute top-full md:-mt-[70px] md:mr-14 border border-[#8282823c] transition-all duration-300 ease-in-out z-40
+        className={`absolute transition-all duration-300 ease-in-out z-40
           ${
             isOpen
               ? 'opacity-100 scale-100'
               : 'opacity-0 scale-95 pointer-events-none'
           }
-          flex bg-white dark:bg-transparent dark:text-white backdrop-blur-2xl rounded-lg  p-4
-          flex-col items-start gap-4
-          sm:flex-row sm:items-center sm:gap-10 md:gap-12
         `}
         style={{
-          left: 'auto',
-          right: 40, // aligns the menu left of the hamburger on desktop
+          top: '100%', // mobile: below button
+          right: '1.5rem',
         }}
       >
-        {sections.map(({ text, id }) => (
-          <ScrollLink
-            key={id}
-            to={id}
-            smooth={true}
-            duration={1000}
-            spy={true} // Track when the section is in view
-            onClick={() => setIsOpen(false)} // Close the menu when a link is clicked
-            className="font-medium text-lg cursor-pointer md:text-lg hover:scale-110 transition-all duration-200"
-          >
-            {text}
-          </ScrollLink>
-        ))}
+        <div className="hidden md:flex flex-row gap-6 bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg">
+          {sections.map(({ text, id }) => (
+            <ScrollLink
+              key={id}
+              to={id}
+              smooth={true}
+              duration={800}
+              spy={true}
+              onClick={() => setIsOpen(false)}
+              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer"
+            >
+              {text}
+            </ScrollLink>
+          ))}
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="flex flex-col md:hidden bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg mt-2">
+          {sections.map(({ text, id }) => (
+            <ScrollLink
+              key={id}
+              to={id}
+              smooth={true}
+              duration={800}
+              spy={true}
+              onClick={() => setIsOpen(false)}
+              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer mb-2 last:mb-0"
+            >
+              {text}
+            </ScrollLink>
+          ))}
+        </div>
       </nav>
 
       {/* Backdrop overlay for mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-opacity-30 lg:hidden"
+          className="fixed inset-0 z-30 bg-transparent md:hidden"
           onClick={toggleMenu}
         />
       )}
