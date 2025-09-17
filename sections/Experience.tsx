@@ -87,7 +87,7 @@ export default function Experience() {
                 `}
               >
                 {/* Numbered Path Element (only on desktop) */}
-                <div className="absolute top-1/2 left-full -translate-y-1/2 flex items-center justify-center w-10 h-10 -ml-5 md:block hidden">
+                <div className="absolute top-1/2 left-full -translate-y-1/2  items-center justify-center w-10 h-10 -ml-5 md:block hidden">
                   <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
                     {EXPERIENCES.length - originalIndex}
                   </div>
@@ -147,7 +147,7 @@ export default function Experience() {
                 `}
               >
                 {/* Numbered Path Element (only on desktop) */}
-                <div className="absolute top-1/2 right-full -translate-y-1/2 flex items-center justify-center w-10 h-10 -mr-5 md:block hidden">
+                <div className="absolute top-1/2 right-full -translate-y-1/2  items-center justify-center w-10 h-10 -mr-5 md:block hidden">
                   <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
                     {EXPERIENCES.length - originalIndex}
                   </div>

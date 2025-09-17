@@ -4,10 +4,12 @@ import { useState } from 'react';
 import {
   Equal,
   X,
-  AudioWaveform,
-  TerminalIcon,
   Code,
-  Terminal,
+  TerminalSquare,
+  Briefcase,
+  GitPullRequest,
+  Mail,
+  Home,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Link as ScrollLink } from 'react-scroll';
@@ -17,17 +19,24 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const sections = [
-    { text: 'Home', id: 'home' },
-    { text: 'Stacks', id: 'stacks' },
-    { text: 'Projects', id: 'projects' },
-    { text: 'Careers', id: 'careers' },
+    { text: 'Stacks', id: 'stacks', icon: Code },
+    { text: 'Projects', id: 'projects', icon: TerminalSquare },
+    { text: 'Experience', id: 'careers', icon: Briefcase },
+    { text: 'Automations', id: 'automations', icon: GitPullRequest },
+    { text: 'Contact', id: 'contact', icon: Mail },
   ];
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 lg:px-12 py-4 backdrop-blur-md bg-white/80 dark:bg-gray-900/80">
-      {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 group">
-        <Terminal
+      {/* Logo as Home Link */}
+      <ScrollLink
+        to="home"
+        smooth={true}
+        duration={800}
+        className="flex items-center gap-2 group cursor-pointer"
+        onClick={() => setIsOpen(false)}
+      >
+        <Home
           size={22}
           className="text-blue-600 group-hover:rotate-6 transition-transform"
         />
@@ -39,7 +48,7 @@ const Navbar = () => {
             Frontend Dev
           </span>
         </span>
-      </Link>
+      </ScrollLink>
 
       {/* Menu Button */}
       <button
@@ -50,7 +59,7 @@ const Navbar = () => {
         {isOpen ? <X size={24} /> : <Equal size={24} />}
       </button>
 
-      {/* Menu */}
+      {/* Desktop Menu */}
       <nav
         className={`absolute transition-all duration-300 ease-in-out z-40
           ${
@@ -60,12 +69,12 @@ const Navbar = () => {
           }
         `}
         style={{
-          top: '100%', // mobile: below button
+          top: '100%',
           right: '1.5rem',
         }}
       >
-        <div className="hidden md:flex flex-row gap-6 bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg">
-          {sections.map(({ text, id }) => (
+        <div className="hidden md:flex flex-row items-center gap-6 bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg">
+          {sections.map(({ text, id, icon: Icon }) => (
             <ScrollLink
               key={id}
               to={id}
@@ -73,16 +82,22 @@ const Navbar = () => {
               duration={800}
               spy={true}
               onClick={() => setIsOpen(false)}
-              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer"
+              className="group flex flex-col items-center gap-1 cursor-pointer"
             >
-              {text}
+              <Icon
+                size={22}
+                className="text-gray-800 dark:text-white group-hover:text-blue-500 transition-colors"
+              />
+              <span className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors">
+                {text}
+              </span>
             </ScrollLink>
           ))}
         </div>
 
         {/* Mobile Menu */}
         <div className="flex flex-col md:hidden bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg mt-2">
-          {sections.map(({ text, id }) => (
+          {sections.map(({ text, id, icon: Icon }) => (
             <ScrollLink
               key={id}
               to={id}
@@ -90,8 +105,9 @@ const Navbar = () => {
               duration={800}
               spy={true}
               onClick={() => setIsOpen(false)}
-              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer mb-2 last:mb-0"
+              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer mb-2 last:mb-0 flex items-center gap-3"
             >
+              <Icon size={20} />
               {text}
             </ScrollLink>
           ))}

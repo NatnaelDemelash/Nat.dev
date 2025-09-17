@@ -47,12 +47,12 @@ export default function Hero() {
         <div className="flex flex-1 flex-col items-center lg:items-start space-y-4 w-full max-w-md mx-auto">
           {/* Avatar + Intro bubble */}
           <div className="flex items-end gap-3">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-200">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-200">
               <Image
                 alt="profile pic"
                 src={profile}
-                width={96}
-                height={96}
+                width={110}
+                height={110}
                 className="w-full h-full object-cover"
               />
             </div>

@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { Minus } from 'lucide-react';
 import {
   SiNodedotjs,
-  SiVuedotjs,
-  SiFirebase,
   SiAtlassian,
   SiTrello,
   SiGoogle,
@@ -13,14 +11,13 @@ import {
 } from 'react-icons/si';
 import { RiMailFill } from 'react-icons/ri';
 
-// Data for the automations section
+// Data for the automations section (now with just 3 items)
 interface Automation {
   name: string;
   description: string;
   techStack: string[];
 }
 
-// Data map for tech icons
 const techIcons = {
   n8n: { icon: SiNodedotjs, color: '#68A063' },
   'Jira API': { icon: SiAtlassian, color: '#0052CC' },
@@ -28,7 +25,6 @@ const techIcons = {
   'Trello API': { icon: SiTrello, color: '#0079BF' },
   'Email Integration': { icon: RiMailFill, color: '#D44638' },
   'Google Drive API': { icon: SiGoogle, color: '#4285F4' },
-  Firebase: { icon: SiFirebase, color: '#FFCA28' },
 };
 
 const AUTOMATIONS: Automation[] = [
@@ -85,7 +81,6 @@ export default function Automations() {
                 const techInfo = techIcons[tech as keyof typeof techIcons];
                 if (!techInfo) return null;
                 const Icon = techInfo.icon;
-
                 return (
                   <React.Fragment key={i}>
                     <motion.div
