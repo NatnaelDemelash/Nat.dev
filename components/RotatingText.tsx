@@ -12,7 +12,7 @@ import {
 const ROTATING_CONTENT = [
   {
     icon: <Code size={24} className="text-blue-500" />,
-    text: 'Full-Stack Development',
+    text: 'Front-End Site Development',
   },
   {
     icon: <Zap size={24} className="text-blue-500" />,
@@ -25,10 +25,6 @@ const ROTATING_CONTENT = [
   {
     icon: <LayoutPanelLeft size={24} className="text-blue-500" />,
     text: 'Responsive UI/UX Design',
-  },
-  {
-    icon: <ServerCog size={24} className="text-blue-500" />,
-    text: 'Backend Development',
   },
 ];
 
@@ -43,7 +39,7 @@ const RotatingText = () => {
   }, []);
 
   return (
-    <div className="relative flex h-12 md:h-14 w-full max-w-md items-center justify-center overflow-hidden rounded-xl border border-blue-400/40 bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
+    <div className="relative flex h-11 md:h-12 w-full max-w-md items-center justify-center overflow-hidden rounded-xl border border-blue-400/40 bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
       {ROTATING_CONTENT.map((item, index) => (
         <div
           key={index}
