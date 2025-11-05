@@ -1,18 +1,19 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata } from "next";
+import "./globals.css";
 
-import { Darker_Grotesque } from 'next/font/google';
+import { Darker_Grotesque } from "next/font/google";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const darkerGrotesque = Darker_Grotesque({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-darker-grotesque',
-  display: 'swap', // (better for performance)
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-darker-grotesque",
+  display: "swap", // (better for performance)
 });
 
 export const metadata: Metadata = {
-  title: 'Natnael Demelash',
-  description: 'A personal portfolio site',
+  title: "Natnael Demelash",
+  description: "A personal portfolio site",
 };
 
 export default function RootLayout({
@@ -26,7 +27,12 @@ export default function RootLayout({
       className={`${darkerGrotesque.variable}`}
       suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body>
+        <main>
+          {children}
+          <ScrollToTop />
+        </main>
+      </body>
     </html>
   );
 }
