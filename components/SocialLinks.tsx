@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const socialLinks = [
   {
-    name: 'GitHub',
-    href: 'https://github.com/NatnaelDemelash',
+    name: "GitHub",
+    href: "https://github.com/NatnaelDemelash",
     icon: Github,
   },
   {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/natnaeldemelash/',
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/natnaeldemelash/",
     icon: Linkedin,
   },
   {
-    name: 'Email',
-    href: 'mailto:natnael.dev101@gmail.com',
+    name: "Email",
+    href: "mailto:natnael.dev101@gmail.com",
     icon: Mail,
   },
 ];
 
 export const SocialLinks = () => {
   return (
-    <div className="flex w-fit items-center gap-4 p-4 rounded-lg border border-[#4040407c] bg-white shadow-sm">
+    <div className="flex w-fit items-center gap-4 p-4 rounded-lg border border-[#4040407c] bg-white shadow-sm dark:bg-gray-800 dark:text-gray-200">
       {socialLinks.map(({ name, href, icon: Icon }) => (
         <a
           key={name}
@@ -30,7 +30,7 @@ export const SocialLinks = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={name}
-          className="text-gray-600 hover:text-black transition-colors"
+          className="text-gray-600 hover:text-black dark:text-gray-200 transition-colors"
         >
           <Icon className="w-5 h-5" />
         </a>

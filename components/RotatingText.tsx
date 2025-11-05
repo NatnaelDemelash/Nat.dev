@@ -1,30 +1,30 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Code,
   Zap,
   BrainCircuit,
   LayoutPanelLeft,
   ServerCog,
-} from 'lucide-react';
+} from "lucide-react";
 
 const ROTATING_CONTENT = [
   {
     icon: <Code size={24} className="text-blue-500" />,
-    text: 'Front-End Site Development',
+    text: "Front-End Site Development",
   },
   {
     icon: <Zap size={24} className="text-blue-500" />,
-    text: 'Workflow & API Automation',
+    text: "Workflow & API Automation",
   },
   {
     icon: <BrainCircuit size={24} className="text-blue-500" />,
-    text: 'AI-Powered Integrations',
+    text: "AI-Powered Integrations",
   },
   {
     icon: <LayoutPanelLeft size={24} className="text-blue-500" />,
-    text: 'Responsive UI/UX Design',
+    text: "Responsive UI/UX Design",
   },
 ];
 
@@ -39,14 +39,14 @@ const RotatingText = () => {
   }, []);
 
   return (
-    <div className="relative flex h-11 md:h-12 w-full max-w-md items-center justify-center overflow-hidden rounded-xl border border-blue-400/40 bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
+    <div className="relative flex h-11 md:h-12 w-full max-w-md items-center justify-center overflow-hidden rounded-xl border border-blue-400/40 dark:bg-gray-950 bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
       {ROTATING_CONTENT.map((item, index) => (
         <div
           key={index}
           className={`absolute flex w-full items-center gap-3 md:gap-4 transition-all duration-700 ease-in-out ${
             index === currentIndex
-              ? 'translate-y-0 opacity-100'
-              : 'translate-y-full opacity-0'
+              ? "translate-y-0 opacity-100"
+              : "translate-y-full opacity-0"
           }`}
         >
           {/* Icon */}

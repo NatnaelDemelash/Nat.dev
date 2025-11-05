@@ -3,6 +3,8 @@ import "./globals.css";
 
 import { Darker_Grotesque } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
+import { ThemeProvider } from "@/components/theme-provider";
+import ThemeToggle from "@/components/theme-toggle";
 
 const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
@@ -28,10 +30,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <main>
-          {children}
-          <ScrollToTop />
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main>
+            {children}
+            <ScrollToTop />
+            <ThemeToggle />
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
