@@ -1,46 +1,46 @@
-'use client';
-import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
-import { Minus, ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
+"use client";
+import Image from "next/image";
+import { FaGithub } from "react-icons/fa";
+import { Minus, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const projects = [
   {
-    title: 'Omni Food',
+    title: "Omni Food",
     description:
-      'An AI-based tech company focused on consumer well-being through a healthy diet.',
-    tech: ['React', 'TailwindCSS', 'Framer Motion'],
-    image: '/project1.png',
-    github: 'https://github.com/example/portfolio',
-    live: 'https://omni-food-eta.vercel.app/',
+      "An AI-based tech company focused on consumer well-being through a healthy diet.",
+    tech: ["React", "TailwindCSS", "Framer Motion"],
+    image: "/project1.png",
+    github: "https://github.com/NatnaelDemelash/OmniFood",
+    live: "https://omni-food-eta.vercel.app/",
   },
   {
-    title: 'Pizzeria',
+    title: "Pizzeria",
     description:
-      'A responsive website for a local pizza shop, with a focus on user-friendly navigation and visual appeal.',
-    tech: ['React', 'Firebase', 'Redux'],
-    image: '/project2.png',
-    github: 'https://github.com/example/portfolio',
-    live: 'https://pizzeria-alpha.vercel.app/',
+      "A responsive website for a local pizza shop, with a focus on user-friendly navigation and visual appeal.",
+    tech: ["React", "Firebase", "Redux"],
+    image: "/project2.png",
+    github: "https://github.com/NatnaelDemelash/pizzeria_pizza",
+    live: "https://pizzeria-alpha.vercel.app/",
   },
   {
-    title: 'Aurora_Aisel Shop',
+    title: "CronEase",
     description:
-      'A fully functional e-commerce website for a local clothing brand.',
-    tech: ['React', 'Vite', 'Stripe'],
-    image: '/project3.png',
-    github: 'https://github.com/example/portfolio',
-    live: 'https://aurora-aisel.vercel.app/',
+      "A web app that allows users to generate, understand, and preview cron expressions in plain English, with explanations and next run times.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "/project3.png",
+    github: "https://github.com/NatnaelDemelash/CronEase",
+    live: "https://cron-ease-beta.vercel.app/",
   },
   {
-    title: 'Puluk Travel',
+    title: "Puluk Travel",
     description:
-      'A fully functional travel website for a local tourism company.',
-    tech: ['React', 'TailwindCSS', 'TypeScript'],
-    image: '/project4.png',
-    github: 'https://github.com/example/portfolio',
-    live: 'https://puluk-travel.vercel.app/',
+      "A fully functional travel website for a local tourism company.",
+    tech: ["React", "TailwindCSS", "TypeScript"],
+    image: "/project4.png",
+    github: "https://github.com/NatnaelDemelash/puluk_travel",
+    live: "https://puluk-travel.vercel.app/",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function Projects() {
               rotate: index % 2 === 0 ? -1 : 1,
             }}
             whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
             viewport={{ root: containerRef, once: true }}
             className={`group relative -mt-24 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden cursor-pointer first:mt-0`}
           >
