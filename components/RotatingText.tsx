@@ -39,7 +39,7 @@ const RotatingText = () => {
   }, []);
 
   return (
-    <div className="relative flex h-11 md:h-12 w-full max-w-md items-center justify-center overflow-hidden rounded-xl border border-blue-400/40 dark:bg-gray-950 bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
+    <div className="relative flex h-11 md:h-12 w-full max-w-md items-center justify-center overflow-hidden rounded-xl  dark:bg-[#121212] bg-blue-50 px-5 md:px-6 py-3 shadow-inner">
       {ROTATING_CONTENT.map((item, index) => (
         <div
           key={index}

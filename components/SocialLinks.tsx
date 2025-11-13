@@ -22,7 +22,7 @@ const socialLinks = [
 
 export const SocialLinks = () => {
   return (
-    <div className="flex w-fit items-center gap-4 p-4 rounded-lg border border-[#4040407c] bg-white shadow-sm dark:bg-gray-800 dark:text-gray-200">
+    <div className="flex w-fit items-center gap-4 p-4 rounded-lg border border-[#4040407c] bg-white shadow-sm dark:bg-[#121212] dark:text-gray-200">
       {socialLinks.map(({ name, href, icon: Icon }) => (
         <a
           key={name}

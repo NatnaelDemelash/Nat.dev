@@ -3,6 +3,7 @@
 import { CheckCheck } from "lucide-react";
 import Image from "next/image";
 import profile from "@/public/profile.png";
+import newProfile from "@/public/profilev2.jpg";
 import { SocialLinks } from "@/components/SocialLinks";
 import RotatingText from "@/components/RotatingText";
 
@@ -47,16 +48,16 @@ export default function Hero() {
         <div className="flex flex-1 flex-col items-center lg:items-start space-y-4 w-full max-w-md mx-auto">
           {/* Avatar + Intro bubble */}
           <div className="flex items-end gap-3">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-200">
+            <div className="w-48 h-48 rounded-full overflow-hidden border border-blue-200">
               <Image
                 alt="profile pic"
-                src={profile}
-                width={110}
-                height={110}
+                src={newProfile}
+                width={300}
+                height={300}
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="bg-blue-100 dark:bg-gray-900 dark:text-gray-200 px-4 py-2 rounded-3xl rounded-bl-none text-gray-800 text-base md:text-lg font-semibold shadow-sm">
+            <div className="bg-blue-100 dark:bg-[#121212] dark:text-gray-200 px-4 py-2 rounded-3xl rounded-bl-none text-gray-800 text-base md:text-lg font-semibold shadow-sm">
               Hi,{" "}
               <span className="text-blue-600 dark:text-gray-200">Natnael</span>{" "}
               here.
@@ -64,9 +65,9 @@ export default function Hero() {
           </div>
 
           {/* Chat-style info bubble */}
-          <div className="bg-[#FBFBFA] dark:bg-gray-900 border border-gray-300 dark:border-gray-700 px-6 py-3 rounded-3xl rounded-bl-none shadow-sm max-w-2xl w-full">
+          <div className="bg-[#FBFBFA] dark:bg-[#121212] border border-blue-300  px-6 py-3 rounded-3xl rounded-bl-none shadow-sm max-w-2xl w-full">
             <p className="text-gray-700 dark:text-gray-200 text-base md:text-md leading-relaxed">
-              Frontend developer with 2 years of experience building
+              Frontend developer with 3 years of experience building
               high-quality interfaces using React, Next.js, and TypeScript.
             </p>
           </div>
