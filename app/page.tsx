@@ -1,22 +1,25 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
-import Automations from '@/sections/Automations';
-import Contact from '@/sections/Contact';
-import Experience from '@/sections/Experience';
-import Hero from '@/sections/Hero';
-import Projects from '@/sections/Projects';
-import TechStack from '@/sections/TechStacks';
-import React from 'react';
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Automations from "@/sections/Automations";
+import Contact from "@/sections/Contact";
+import Experience from "@/sections/Experience";
+import Hero from "@/sections/Hero";
+import Projects from "@/sections/Projects";
+import Services from "@/sections/Services";
+import Skills from "@/sections/Skills";
+import TechMarquee from "@/sections/TechMarquee";
 
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto py-6 px-8">
+    <div className="relative overflow-x-clip">
       <Navbar />
-      <main className="px-6">
+      <main>
         <Hero />
-        <TechStack />
+        <TechMarquee />
+        <Services />
         <Projects />
         <Automations />
+        <Skills />
         <Experience />
         <Contact />
       </main>

@@ -1,195 +1,90 @@
-'use client';
-import React from 'react';
-import { Minus } from 'lucide-react';
-import { motion } from 'framer-motion';
+"use client";
 
-// Data structure and constant as provided in the previous prompt.
-interface ExperienceType {
-  year: string;
-  role: string;
-  company: string;
-  description: string[];
-  technologies?: string[];
-}
-
-const EXPERIENCES: ExperienceType[] = [
-  {
-    year: 'JAN 2024 - Present',
-    role: 'Software Engineer',
-    company: 'GoodayOn',
-    description: [
-      'Designing and building internal tools that improve daily operations and team productivity.',
-      'Creating smart AI-driven automations and workflows using n8n to reduce repetitive tasks.',
-      'Developing custom Slack integrations for real-time collaboration and alerts.',
-      'Engineering seamless integrations across different platforms to streamline business processes.',
-      'Contributing to modern web applications with React, Vue, and Tailwind, ensuring responsive and maintainable code.',
-    ],
-    technologies: ['React', 'Vue', 'Tailwind', 'Firebase', 'n8n', 'Slack API'],
-  },
-  {
-    year: 'FEB 2021 - DEC 2023',
-    role: 'IT Support',
-    company: 'GoodayOn',
-    description: [
-      'Led the operations team while driving process improvements across multiple projects.',
-      'Implemented automations in Jira to optimize workflows and reduce manual effort.',
-      'Utilized Trello and Jira to manage projects, track progress, and improve team efficiency.',
-      'Collaborated with cross-functional teams to ensure smooth project execution and delivery.',
-    ],
-    technologies: ['Jira', 'Trello', 'Jira Automation'],
-  },
-  {
-    role: 'Junior Web Developer',
-    company: 'AAU(Internship)',
-    year: 'MAY 2019 - JUL 2019',
-    description: [
-      'Cooperated with designers to create clean interfaces and simple, intuitive interactions and experiences.',
-      'Developed project concepts and maintained optimal workflow.',
-      'Worked with senior developers to manage large, complex design projects for corporate clients.',
-    ],
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-  },
-];
-
-const experiencesLeft = EXPERIENCES.filter((_, index) => index % 2 === 0);
-const experiencesRight = EXPERIENCES.filter((_, index) => index % 2 !== 0);
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "motion/react";
+import Container from "@/components/Container";
+import Reveal from "@/components/Reveal";
+import { EXPERIENCES } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 export default function Experience() {
+  const listRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 70%", "end 60%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+
   return (
-    <section className="px-6 py-12 md:p-12 lg:p-20" id="careers">
-      {/* Section Title */}
-      <div className="flex items-center gap-2 mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          Experience
-        </h2>
-        <Minus className="text-gray-400 dark:text-gray-500" />
-      </div>
-
-      {/* Experience Grid with Path */}
-      <div className="relative flex flex-col md:flex-row md:justify-center md:gap-12">
-        {/* Vertical Path Line (only on desktop) */}
-        <div className="absolute top-0 bottom-0 left-1/2 -ml-px w-px bg-gray-200 dark:bg-gray-800 hidden md:block" />
-
-        {/* Left Column */}
-        <div className="flex flex-col w-full md:w-1/2">
-          {experiencesLeft.map((exp, index) => {
-            const originalIndex = EXPERIENCES.indexOf(exp);
-            return (
-              <motion.div
-                key={originalIndex}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: originalIndex * 0.15 }}
-                viewport={{ once: true, amount: 0.4 }}
-                className={`
-                  group relative flex flex-col gap-4 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800 backdrop-blur-sm bg-white/20 dark:bg-gray-800/20 hover:shadow-xl hover:translate-y-[-5px] transition-all duration-300
-                  mb-8 md:mb-16
-                `}
-              >
-                {/* Numbered Path Element (only on desktop) */}
-                <div className="absolute top-1/2 left-full -translate-y-1/2  items-center justify-center w-10 h-10 -ml-5 md:block hidden">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
-                    {EXPERIENCES.length - originalIndex}
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="flex flex-col">
-                  <span className="text-lg font-bold text-gray-900 dark:text-white">
-                    {exp.role}
-                  </span>
-                  <span className="font-semibold text-blue-500 dark:text-blue-400">
-                    @{exp.company}
-                  </span>
-                </div>
-
-                <span className="text-xs uppercase text-gray-400 dark:text-gray-500 font-medium">
-                  {exp.year}
-                </span>
-
-                <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 text-sm space-y-2">
-                  {exp.description.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-
-                {exp.technologies && (
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {exp.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
+    <section id="experience" className="py-24 md:py-32">
+      <Container className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <Reveal className="lg:sticky lg:top-32">
+            <p className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+              <span className="text-accent-ink">05</span>
+              <span className="h-px w-8 bg-line-strong" />
+              Experience
+            </p>
+            <h2 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">
+              Where I&apos;ve <span className="text-muted">been building.</span>
+            </h2>
+            <p className="mt-4 text-muted">
+              From running operations to owning the frontend — I know the processes I automate because
+              I&apos;ve lived them.
+            </p>
+          </Reveal>
         </div>
 
-        {/* Right Column */}
-        <div className="flex flex-col w-full md:w-1/2 md:mt-24">
-          {experiencesRight.map((exp, index) => {
-            const originalIndex = EXPERIENCES.indexOf(exp);
-            return (
-              <motion.div
-                key={originalIndex}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: originalIndex * 0.15 }}
-                viewport={{ once: true, amount: 0.4 }}
-                className={`
-                  group relative flex flex-col gap-4 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800 backdrop-blur-sm bg-white/20 dark:bg-gray-800/20 hover:shadow-xl hover:translate-y-[-5px] transition-all duration-300
-                  mb-8 md:mb-16
-                `}
-              >
-                {/* Numbered Path Element (only on desktop) */}
-                <div className="absolute top-1/2 right-full -translate-y-1/2  items-center justify-center w-10 h-10 -mr-5 md:block hidden">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-white text-sm font-semibold z-10">
-                    {EXPERIENCES.length - originalIndex}
-                  </div>
-                </div>
+        <ol ref={listRef} className="relative lg:col-span-8">
+          <span className="absolute top-2 bottom-2 left-[7px] w-px bg-line-strong" aria-hidden />
+          <motion.span
+            style={{ scaleY: progress }}
+            className="absolute top-2 bottom-2 left-[7px] w-px origin-top bg-accent"
+            aria-hidden
+          />
 
-                {/* Card Content */}
-                <div className="flex flex-col">
-                  <span className="text-lg font-bold text-gray-900 dark:text-white">
-                    {exp.role}
-                  </span>
-                  <span className="font-semibold text-blue-500 dark:text-blue-400">
-                    @{exp.company}
-                  </span>
-                </div>
-
-                <span className="text-xs uppercase text-gray-400 dark:text-gray-500 font-medium">
-                  {exp.year}
-                </span>
-
-                <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 text-sm space-y-2">
-                  {exp.description.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-
-                {exp.technologies && (
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {exp.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+          {EXPERIENCES.map((exp, i) => (
+            <li key={exp.role} className="relative pb-12 pl-10 last:pb-0">
+              <span
+                className={cn(
+                  "absolute top-1.5 left-0 grid size-[15px] place-items-center rounded-full border-2 bg-bg",
+                  exp.current ? "border-accent" : "border-line-strong"
                 )}
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+              >
+                {exp.current && <span className="size-1.5 rounded-full bg-accent" />}
+              </span>
+
+              <Reveal delay={i * 0.05}>
+                <div className="rounded-[1.5rem] border border-line bg-surface p-6 transition-colors hover:border-line-strong md:p-7">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted">{exp.period}</p>
+                    {exp.current && (
+                      <span className="rounded-full bg-accent/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-accent-ink">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                    {exp.role} <span className="text-muted">@ {exp.company}</span>
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {exp.points.map((point) => (
+                      <li key={point} className="flex gap-3 text-[15px] leading-relaxed text-muted">
+                        <span className="mt-2.5 h-px w-3 shrink-0 bg-accent-ink" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <ul className="mt-5 flex flex-wrap gap-1.5">
+                    {exp.tech.map((t) => (
+                      <li key={t} className="rounded-lg bg-surface-2 px-2.5 py-1 text-xs text-muted">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </Container>
     </section>
   );
 }

@@ -1,21 +1,37 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Darker_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
-import ThemeToggle from "@/components/theme-toggle";
 
-const darkerGrotesque = Darker_Grotesque({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-darker-grotesque",
-  display: "swap", // (better for performance)
+  weight: ["500", "600", "700"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Natnael Demelash",
-  description: "A personal portfolio site",
+  title: "Natnael Demelash — Frontend & Automation Engineer",
+  description:
+    "I build premium Next.js frontends and n8n automations that remove repetitive work. Based in Addis Ababa, open to remote.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -26,21 +42,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${darkerGrotesque.variable}`}
+      className={`${bricolage.variable} ${geist.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
-          <main>
-            {children}
-            <ScrollToTop />
-            <ThemeToggle />
-          </main>
+          {children}
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

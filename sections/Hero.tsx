@@ -1,83 +1,160 @@
-"use client";
-
-import { CheckCheck } from "lucide-react";
 import Image from "next/image";
-import profile from "@/public/profile.png";
-import newProfile from "@/public/profilev2.jpg";
-import { SocialLinks } from "@/components/SocialLinks";
-import RotatingText from "@/components/RotatingText";
+import { ArrowDown, ArrowUpRight, Gauge, Sparkles, Workflow } from "lucide-react";
+import Container from "@/components/Container";
+import WorkflowGraph from "@/components/WorkflowGraph";
+import TechIcon from "@/components/TechIcon";
+import { PROFILE } from "@/lib/data";
+
+const HIGHLIGHTS = [
+  { icon: Sparkles, label: "What I deliver", value: "UI that feels premium" },
+  { icon: Workflow, label: "Automation", value: "n8n + Slack + Jira" },
+  { icon: Gauge, label: "Speed", value: "Weeks, not months" },
+];
+
+function Line({ children, delay }: { children: React.ReactNode; delay: number }) {
+  return (
+    <span className="block overflow-hidden pb-1">
+      <span className="anim-rise block" style={{ animationDelay: `${delay}s` }}>
+        {children}
+      </span>
+    </span>
+  );
+}
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className="min-h-[calc(100vh-5rem)] flex items-center px-4 md:px-8 lg:px-16 mt-10"
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center w-full max-w-7xl mx-auto">
-        {/* Left Column: Headline & Rotating Text */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-          {/* Top Status */}
-          <div className="flex items-center gap-2 bg-[#e6ffed] border border-green-300 px-3 py-1.5 rounded-full shadow-sm text-green-600 text-sm font-medium w-fit">
-            <CheckCheck className="w-4 h-4" />
-            <span>Available for new projects</span>
-          </div>
+    <section id="hero" className="relative isolate pt-32 pb-20 md:pt-40 md:pb-28">
+      {/* Backdrop */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_40%,transparent_100%)]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-[var(--glow)] blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-noise opacity-[0.035] mix-blend-overlay" />
 
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight relative">
-            <span className="text-blue-500">Coding visuals</span> until they
-            tell a story
-            {/* Accent line */}
-            <span className="hidden md:block w-16 h-1 bg-blue-300 mt-2 rounded-full"></span>
+      <Container className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
+        {/* Copy */}
+        <div className="lg:col-span-7">
+          <h1 className="font-display font-semibold">
+            {/* Tier 1: the name, one confident line */}
+            <span className="block text-[clamp(2.75rem,6.2vw,4.75rem)] leading-[0.95] tracking-[-0.04em]">
+              <Line delay={0.1}>Hi, I&apos;m Natnael.</Line>
+            </span>
+            {/* Tier 2: seen & unseen */}
+            <span className="mt-6 block text-[clamp(1.5rem,2.7vw,2.2rem)] leading-[1.2] tracking-[-0.025em] lg:whitespace-nowrap">
+              <Line delay={0.22}>
+                <span className="text-muted">I build the parts of the web </span>
+                <span className="relative inline-block">
+                  you see,
+                  <svg
+                    viewBox="0 0 300 12"
+                    preserveAspectRatio="none"
+                    className="absolute -bottom-1 left-0 h-2.5 w-full text-accent"
+                    aria-hidden
+                  >
+                    <path
+                      d="M2 9 C 80 2, 220 2, 298 7"
+                      pathLength={1}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      className="anim-draw"
+                      style={{ animationDelay: "0.9s" }}
+                    />
+                  </svg>
+                </span>
+              </Line>
+              <Line delay={0.32}>
+                <span className="text-muted">and the parts that quietly</span>
+              </Line>
+              <Line delay={0.42}>keep things running.</Line>
+            </span>
           </h1>
 
-          {/* Tagline */}
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-xl">
-            Turning ideas into interactive, responsive experiences that delight
-            users.
-          </p>
-
-          {/* Rotating Features */}
-          <div className="w-full flex justify-center lg:justify-start">
-            <div className="w-full max-w-sm">
-              <RotatingText />
-            </div>
+          <div style={{ animationDelay: "0.55s" }} className="anim-fade-up mt-10 flex flex-wrap items-center gap-3"
+          >
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 font-medium text-accent-fg shadow-[0_10px_40px_-12px_var(--btn-glow)] transition-transform hover:scale-[1.03]"
+            >
+              See my work
+              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
+            </a>
+            <a
+              href="#contact"
+              className="group inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/60 px-6 py-3.5 font-medium backdrop-blur transition-colors hover:bg-surface-2"
+            >
+              Let&apos;s talk
+              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
+
+          <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3"
+          >
+            {HIGHLIGHTS.map(({ icon: Icon, label, value }, i) => (
+              <div
+                key={label}
+                style={{ animationDelay: `${0.6 + i * 0.08}s` }}
+                className="anim-fade-up flex items-center gap-3 bg-surface/80 p-4 backdrop-blur"
+              >
+                <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-surface-2 text-accent-ink">
+                  <Icon className="size-4" />
+                </span>
+                <div>
+                  <dt className="font-mono text-[10px] uppercase tracking-widest text-subtle">{label}</dt>
+                  <dd className="text-sm font-medium">{value}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Right Column: Avatar & Chat Bubbles */}
-        <div className="flex flex-1 flex-col items-center lg:items-start space-y-4 w-full max-w-md mx-auto">
-          {/* Avatar + Intro bubble */}
-          <div className="flex items-end gap-3">
-            <div className="w-48 h-48 rounded-full overflow-hidden border border-blue-200">
-              <Image
-                alt="profile pic"
-                src={newProfile}
-                width={300}
-                height={300}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="bg-blue-100 dark:bg-[#121212] dark:text-gray-200 px-4 py-2 rounded-3xl rounded-bl-none text-gray-800 text-base md:text-lg font-semibold shadow-sm">
-              Hi,{" "}
-              <span className="text-blue-600 dark:text-gray-200">Natnael</span>{" "}
-              here.
+        {/* Portrait */}
+        <div
+          style={{ animationDelay: "0.15s" }}
+          className="anim-pop relative mx-auto w-full max-w-[380px] lg:col-span-5 lg:mr-0 lg:max-w-[400px]"
+        >
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[var(--portrait)] shadow-[0_40px_100px_-30px_rgb(0_0_0/0.5)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,#ffffff70,transparent_55%)]" />
+            <Image
+              src="/profilev2.jpg"
+              alt={PROFILE.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 420px, 90vw"
+              className="object-cover object-[50%_20%] mix-blend-multiply"
+            />
+            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl border border-black/10 bg-white/55 px-4 py-3 text-[#0c0c0d] backdrop-blur-md">
+              <div>
+                <p className="font-display text-lg leading-tight font-semibold">{PROFILE.name}</p>
+                <p className="text-xs text-black/60">{PROFILE.role}</p>
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-black/60">ADD · UTC+3</span>
             </div>
           </div>
 
-          {/* Chat-style info bubble */}
-          <div className="bg-[#FBFBFA] dark:bg-[#121212] border border-blue-300  px-6 py-3 rounded-3xl rounded-bl-none shadow-sm max-w-2xl w-full">
-            <p className="text-gray-700 dark:text-gray-200 text-base md:text-md leading-relaxed">
-              Frontend developer with 3 years of experience building
-              high-quality interfaces using React, Next.js, and TypeScript.
-            </p>
+          {/* Floating chips */}
+          <div className="absolute top-8 -left-4 animate-float rounded-2xl border border-line-strong bg-surface/90 px-3 py-2 shadow-xl backdrop-blur md:-left-10">
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <TechIcon name="Next.js" className="size-4" />
+              <TechIcon name="TypeScript" className="size-4 text-[#3178c6]" />
+              <TechIcon name="Tailwind" className="size-4 text-[#38bdf8]" />
+              <span className="pl-1">Frontend</span>
+            </div>
           </div>
 
-          {/* Social Links */}
-          <div className="pt-2">
-            <SocialLinks />
+          <div
+            className="absolute -right-3 bottom-28 w-[240px] animate-float rounded-2xl border border-line-strong bg-surface/90 p-3 shadow-xl backdrop-blur md:-right-8"
+            style={{ animationDelay: "-3s" }}
+          >
+            <div className="mb-2.5 flex items-center justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted">workflow.run</span>
+              <span className="flex items-center gap-1.5 text-[11px] font-medium text-emerald-500">
+                <span className="size-1.5 rounded-full bg-emerald-500" /> Active
+              </span>
+            </div>
+            <WorkflowGraph steps={["Jira", "n8n", "Slack"]} />
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

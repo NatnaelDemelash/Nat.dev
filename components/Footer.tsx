@@ -1,31 +1,53 @@
-import Link from "next/link";
-import React from "react";
+import { ArrowUp } from "lucide-react";
+import Container from "./Container";
 import ScrambleText from "./ScrambleText";
+import { PROFILE } from "@/lib/data";
 
 const footerLinks = [
-  { name: "GitHub", href: "https://github.com/NatnaelDemelash" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/natnaeldemelash/" },
-  { name: "Gmail", href: "mailto:natnael.dev101@gmail.com" },
+  { name: "GitHub", href: PROFILE.github },
+  { name: "LinkedIn", href: PROFILE.linkedin },
+  { name: "Email", href: `mailto:${PROFILE.email}` },
 ];
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col md:flex-row items-center justify-between mt-10 border-t border-slate-200 dark:border-t dark:border-slate-900 py-4 gap-y-2">
-      <nav className="flex items-center gap-x-4">
-        {footerLinks.map(({ name, href }) => (
-          <Link
-            href={href}
-            key={name}
-            className="text-gray-500 font-medium text-sm uppercase hover:text-blue-500  transition-all"
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-          >
-            <ScrambleText text={name} />
-          </Link>
-        ))}
-      </nav>
-      <p className="text-gray-400 font-medium text-sm text-center md:text-right">
-        &copy; 2025 Natnael Demelash. All rights reserved.
+    <footer className="relative overflow-hidden border-t border-line pt-14">
+      <Container>
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          <div>
+            <p className="font-display text-xl font-semibold tracking-tight">{PROFILE.name}</p>
+            <p className="text-sm text-muted">{PROFILE.role}</p>
+          </div>
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {footerLinks.map(({ name, href }) => (
+              <a
+                key={name}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent-ink"
+              >
+                <ScrambleText text={name} />
+              </a>
+            ))}
+            <a
+              href="#hero"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-fg"
+            >
+              Back to top <ArrowUp className="size-3" />
+            </a>
+          </nav>
+        </div>
+        <p className="mt-10 text-xs text-subtle">
+          &copy; {new Date().getFullYear()} {PROFILE.name}. Designed &amp; built in Addis Ababa.
+        </p>
+      </Container>
+
+      <p
+        aria-hidden
+        className="pointer-events-none mt-6 -mb-[0.22em] text-center font-display text-[22vw] leading-none font-bold tracking-[-0.06em] text-outline select-none"
+      >
+        NATNAEL
       </p>
     </footer>
   );

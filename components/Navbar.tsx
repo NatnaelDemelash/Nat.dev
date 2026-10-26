@@ -1,128 +1,149 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Equal,
-  X,
-  Code,
-  TerminalSquare,
-  Briefcase,
-  GitPullRequest,
-  Mail,
-  Home,
-} from "lucide-react";
-import Link from "next/link";
-import { Link as ScrollLink } from "react-scroll";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "next-themes";
+import { NAV_LINKS } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-
-  const sections = [
-    { text: "Stacks", id: "stacks", icon: Code },
-    { text: "Projects", id: "projects", icon: TerminalSquare },
-    { text: "Experience", id: "careers", icon: Briefcase },
-    { text: "Automations", id: "automations", icon: GitPullRequest },
-    { text: "Contact", id: "contact", icon: Mail },
-  ];
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 lg:px-12 py-4 backdrop-blur-md bg-white/80 dark:bg-[#0B0B0B]/60">
-      {/* Logo as Home Link */}
-      <ScrollLink
-        to="home"
-        smooth={true}
-        duration={800}
-        className="flex items-center gap-2 group cursor-pointer"
-        onClick={() => setIsOpen(false)}
-      >
-        <Home
-          size={22}
-          className="text-blue-600 group-hover:rotate-6 transition-transform"
-        />
-        <span className="flex flex-col leading-tight">
-          <span className="font-bold text-gray-900 dark:text-white">
-            Natnael
-          </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            Frontend Dev
-          </span>
-        </span>
-      </ScrollLink>
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="grid size-9 place-items-center rounded-full text-muted transition-colors hover:bg-surface-2 hover:text-fg"
+      aria-label="Toggle theme"
+    >
+      {mounted && (isDark ? <Sun className="size-4" /> : <Moon className="size-4" />)}
+    </button>
+  );
+}
 
-      {/* Menu Button */}
-      <button
-        onClick={toggleMenu}
-        className="relative z-50 p-3 rounded-lg bg-white/70 dark:bg-gray-900 text-gray-800 dark:text-white backdrop-blur-sm shadow-sm transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        aria-label="Toggle Menu"
-      >
-        {isOpen ? <X size={24} /> : <Equal size={24} />}
-      </button>
+export default function Navbar() {
+  const [active, setActive] = useState<string>("");
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-      {/* Desktop Menu */}
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    ["hero", ...NAV_LINKS.map((l) => l.id), "contact"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
-        className={`absolute transition-all duration-300 ease-in-out z-40
-          ${
-            isOpen
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-95 pointer-events-none"
-          }
-        `}
-        style={{
-          top: "100%",
-          right: "1.5rem",
-        }}
+        className={cn(
+          "flex w-full max-w-3xl items-center justify-between gap-2 rounded-full border p-1.5 pl-2 backdrop-blur-xl transition-all duration-500",
+          scrolled
+            ? "border-line-strong bg-surface/75 shadow-[0_8px_32px_-12px_rgb(0_0_0/0.35)]"
+            : "border-line bg-surface/40"
+        )}
       >
-        <div className="hidden md:flex flex-row items-center gap-6 bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg">
-          {sections.map(({ text, id, icon: Icon }) => (
-            <ScrollLink
-              key={id}
-              to={id}
-              smooth={true}
-              duration={800}
-              spy={true}
-              onClick={() => setIsOpen(false)}
-              className="group flex flex-col items-center gap-1 cursor-pointer"
-            >
-              <Icon
-                size={22}
-                className="text-gray-800 dark:text-white group-hover:text-blue-500 transition-colors"
-              />
-              <span className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors">
-                {text}
-              </span>
-            </ScrollLink>
-          ))}
-        </div>
+        <a href="#hero" className="flex items-center gap-2.5 rounded-full pr-3" onClick={() => setOpen(false)}>
+          <span className="relative">
+            <Image
+              src="/profilev2.jpg"
+              alt="Natnael Demelash"
+              width={32}
+              height={32}
+              className="size-8 rounded-full object-cover"
+            />
+            <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full border-2 border-surface bg-emerald-400" />
+          </span>
+          <span className="font-display text-[15px] font-semibold tracking-tight">Natnael</span>
+        </a>
 
-        {/* Mobile Menu */}
-        <div className="flex flex-col md:hidden bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg mt-2">
-          {sections.map(({ text, id, icon: Icon }) => (
-            <ScrollLink
-              key={id}
-              to={id}
-              smooth={true}
-              duration={800}
-              spy={true}
-              onClick={() => setIsOpen(false)}
-              className="font-medium text-gray-800 dark:text-white text-lg hover:text-blue-500 transition-colors cursor-pointer mb-2 last:mb-0 flex items-center gap-3"
-            >
-              <Icon size={20} />
-              {text}
-            </ScrollLink>
+        <ul className="hidden items-center md:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className={cn(
+                  "relative block rounded-full px-4 py-2 text-sm transition-colors",
+                  active === link.id ? "text-fg" : "text-muted hover:text-fg"
+                )}
+              >
+                {active === link.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-surface-2"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative">{link.label}</span>
+              </a>
+            </li>
           ))}
+        </ul>
+
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="group hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition-transform hover:scale-[1.03] sm:flex"
+          >
+            Let&apos;s talk
+            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid size-9 place-items-center rounded-full text-fg hover:bg-surface-2 md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
         </div>
       </nav>
 
-      {/* Backdrop overlay for mobile */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-transparent md:hidden"
-          onClick={toggleMenu}
-        />
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-x-4 top-20 rounded-3xl border border-line-strong bg-surface/95 p-3 shadow-2xl backdrop-blur-xl md:hidden"
+          >
+            {[...NAV_LINKS, { label: "Contact", id: "contact" }].map((link, i) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-2xl px-4 py-3.5 font-display text-2xl font-medium tracking-tight hover:bg-surface-2"
+              >
+                {link.label}
+                <span className="font-mono text-xs text-subtle">0{i + 1}</span>
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
-};
-
-export default Navbar;
+}
